@@ -1,9 +1,14 @@
+<% form_tag save_info_path do %>
 <p>
-  Basic Info : <%= @info["basic_info"] %>
+  Basic Info : <%= text_area_tag "info[basic_info]", @info["basic_info"] %>
 </p>
 <p>
-  Detailed Info : <%= @info["detailed_info"] %>
+  Detailed Info : <%= text_area_tag "info[detailed_info]", @info["detailed_info"] %>
 </p>
+<p>
+  <%= submit_tag "save" %>
+</p>
+<% end %>
 <p>
   Files to Download :
   <% remote_form_for(:file, :url => save_file_path(:format => "js"), :html => { :method => :post, :multipart => true, :target => 'upload_frame' }) do |f| %>

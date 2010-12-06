@@ -1,6 +1,17 @@
-## YAML Template.
----
-  basic_info : |-
-    djaskdjjakl
-  detailed_info : |-
-    dkdkdjadasjdaasas
+--- !map:HashWithIndifferentAccess 
+detailed_info: |-
+  dkdkdjadasjdaasasad
+  asd
+  asd
+  asdas21
+  3123
+  3213
+  12312
+  3
+basic_info: |
+  adasda
+  asdsadasd
+  sdasda
+  adasdasd
+  asdasdas
+

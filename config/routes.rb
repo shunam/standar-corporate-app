@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => "home", :action => "wall"
   map.admin '/admin', :controller => "home", :action => "admin"
+  map.save_info '/admin/info/save', :controller => "home", :action => "info_save"
   map.save_file '/admin/file/save', :controller => "home", :action => "file_save", :method => :post
   map.remove_file '/admin/file/:id/remove.:format', :controller => "home", :action => "file_remove"
   map.send_file '/admin/file/:id/send', :controller => "home", :action => "file_send"

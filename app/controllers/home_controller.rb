@@ -7,15 +7,18 @@ class HomeController < ApplicationController
     @files = AppFile.all
   end
 
+  def info_save
+    File.open("#{RAILS_ROOT}/config/info.yml", 'w') do |file|
+      YAML::dump(params[:info], file)
+    end
+    redirect_to :back
+  end
+
   def jobs
+    @jobs = Job.all
   end
 
   def admin
-    #    File.open("#{RAILS_ROOT}/lib/tasks/questions/questions.yml", 'w') do |file|
-    #      questions = Question.find(:all, :order => 'order_position')
-    #      # pass the file handle as the second parameter to dump
-    #      YAML::dump(questions, file)
-    #    end
 
     @info = YAML.load_file("#{RAILS_ROOT}/config/info.yml")
     @files = AppFile.all
