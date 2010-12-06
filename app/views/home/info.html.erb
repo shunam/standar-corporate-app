@@ -1,0 +1,12 @@
+<p>
+  Basic Info : <%= @info["basic_info"] %>
+</p>
+<p>
+  Detailed Info : <%= @info["detailed_info"] %>
+</p>
+<p>
+  Files to download :
+  <% @files.each do |file| %>
+    <%= link_to file.filename, send_file_path(file)  %>
+  <% end %>
+</p>

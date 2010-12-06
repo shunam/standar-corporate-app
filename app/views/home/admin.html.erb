@@ -1,0 +1,21 @@
+<p>
+  Basic Info : <%= @info["basic_info"] %>
+</p>
+<p>
+  Detailed Info : <%= @info["detailed_info"] %>
+</p>
+<p>
+  Files to Download :
+  <% remote_form_for(:file, :url => save_file_path(:format => "js"), :html => { :method => :post, :multipart => true, :target => 'upload_frame' }) do |f| %>
+    Select a file on your computer ( 4MB max ) : <br />
+    <%= f.file_field :uploaded_data %><br />
+    <%= link_to 'Upload', "#my_file", :onclick=>"$(this).up('form').submit(); $('list_files').focus() " %>
+    <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
+  <% end %>
+
+<div class="onecol-simple" id="list_files">
+  <% @files.each do |file| %>
+    <%= render :partial => "files.html", :locals => { :file => file } %>
+  <% end %>
+</div>
+</p>
