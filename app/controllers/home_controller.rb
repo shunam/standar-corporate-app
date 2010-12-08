@@ -7,24 +7,19 @@ class HomeController < ApplicationController
     @files = AppFile.all
   end
 
-  def info_save
+  def save_info
     File.open("#{RAILS_ROOT}/config/info.yml", 'w') do |file|
       YAML::dump(params[:info], file)
     end
     redirect_to :back
   end
 
-  def jobs
-    @jobs = Job.all
-  end
-
   def admin
-
     @info = YAML.load_file("#{RAILS_ROOT}/config/info.yml")
     @files = AppFile.all
   end
 
-  def file_save
+  def save_file
     respond_to do |format|
       format.js do
         responds_to_parent do
@@ -41,7 +36,7 @@ class HomeController < ApplicationController
     end
   end
 
-  def file_remove
+  def remove_file
     render :update do |page|
       file = AppFile.find(params[:id])
       if file.destroy
@@ -52,7 +47,7 @@ class HomeController < ApplicationController
     end
   end
 
-  def file_send
+  def send_file
     file = AppFile.find(params[:id])
     send_data(file.image_data,:type => file.content_type, :filename => file.filename)
   end

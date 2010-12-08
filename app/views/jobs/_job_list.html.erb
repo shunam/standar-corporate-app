@@ -1,0 +1,14 @@
+<span id="job_<%= job.id %>"
+<p>
+  <%= job.date %>
+</p>
+<p>
+  <%= job.job_title %>
+</p>
+<p>
+  <%= job.location %>
+</p>
+<p>
+  <%= link_to_remote "Delete", :url => job_path(job), :method => :delete, :confirm => 'Are you sure?' %>
+</p>
+</span>

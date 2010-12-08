@@ -24,3 +24,23 @@
   <% end %>
 </div>
 </p>
+<% form_remote_tag :url => jobs_path, :method => :post do %>
+<p>
+  Date : <%= calendar_date_select :job, :date, :popup => :force, :year_range => 100.years.ago..0.years.from_now, :valid_date_check => "date >= (new Date()).stripTime()" %>
+</p>
+<p>
+  Job Title : <%= text_field :job, :job_title %>
+</p>
+<p>
+  Location : <%= text_field :job, :location %>
+</p>
+<p>
+  Body : <%= text_area :job, :body %>
+</p>
+<p>
+  <%= submit_tag "Add Job" %>
+</p>
+<div id="job_list">
+
+</div>
+<% end %>
