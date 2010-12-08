@@ -1,0 +1,95 @@
+.app_clear{
+    clear: both;
+}
+.float_left{
+    float: left;
+}
+.float_right{
+    float: right;
+}
+.margin_padding{
+    margin: 5px;
+    padding: 5px;
+}
+.pic_header{
+    width: 520px;
+    height: 125px;
+}
+.pic_footer{
+    height: 50px;
+}
+.detail_content{
+    height: 400px;
+    overflow: scroll;
+    overflow-x: hidden;
+    border: 1px solid black;
+}
+.content{
+    width: 900px;
+}
+.content ul{
+    list-style-type: none;
+}
+.content li{
+    display: inline-block;
+    margin-left: 68px !important;
+}
+.detail_content li a:hover{
+    color: blue;
+}
+.content_header{
+    background: #6699bb;
+    border: 1px solid;
+    color: white;
+    padding: 5px;
+}
+.content_textarea{
+    border: 1px solid;
+    left: 1px;
+    position: relative;
+    top: -1px;
+    width: 500px;
+}
+.textarea_job{
+    width: 390px;
+}
+.admin_job_left{
+    width: 100px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.admin_job_right{
+    width: 300px;
+    margin-top: 5px;
+}
+.separator{
+    border: 1px solid black;
+}
+.p_jobs{
+    font-size: 10pt;
+    font-family: arial, times new roman;
+    margin: 5px 0px; 
+}
+.centering{
+    margin: 5px 10px;
+}
+.col1{
+    width: 66px;
+}
+.col2{
+    width: 100px;
+}
+.col3{
+    width: 83px;
+}
+.avatar_container{
+    width: 60px;
+    height: 60px;
+    border: 1px solid;
+}
+.message_container{
+    height: 60px;
+    border: 1px solid;
+    margin-left: 5px;
+    width: 435px;
+}
