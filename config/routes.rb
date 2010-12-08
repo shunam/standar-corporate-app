@@ -1,14 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => "home", :action => "wall"
+  map.root :controller => "walls"
+
   map.admin '/admin', :controller => "home", :action => "admin"
   map.save_info '/admin/info/save', :controller => "home", :action => "save_info"
   map.save_file '/admin/file/save', :controller => "home", :action => "save_file", :method => :post
   map.remove_file '/admin/file/:id/remove.:format', :controller => "home", :action => "remove_file"
   map.send_file '/admin/file/:id/send', :controller => "home", :action => "send_file"
-  map.wall '/wall', :controller => "home", :action => "wall"
   map.info '/info', :controller => "home", :action => "info"
 
   map.resources :jobs
+  map.resources :walls
 
 
   # The priority is based upon order of creation: first created -> highest priority.
