@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.remove_file '/admin/file/:id/remove.:format', :controller => "home", :action => "remove_file"
   map.send_file '/admin/file/:id/send', :controller => "home", :action => "send_file"
   map.info '/info', :controller => "home", :action => "info"
+  map.access_token '/access_token', :controller => "application", :action => "access_token"
 
   map.resources :jobs
   map.resources :walls

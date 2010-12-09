@@ -1,7 +1,4 @@
 class HomeController < ApplicationController
-  def wall
-  end
-
   def info
     @info = YAML.load_file("#{RAILS_ROOT}/config/info.yml")
     @files = AppFile.all
