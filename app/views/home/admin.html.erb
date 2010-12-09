@@ -1,46 +1,74 @@
-<% form_tag save_info_path do %>
-<p>
-  Basic Info : <%= text_area_tag "info[basic_info]", @info["basic_info"] %>
-</p>
-<p>
-  Detailed Info : <%= text_area_tag "info[detailed_info]", @info["detailed_info"] %>
-</p>
-<p>
-  <%= submit_tag "save" %>
-</p>
-<% end %>
-<p>
-  Files to Download :
-  <% remote_form_for(:file, :url => save_file_path(:format => "js"), :html => { :method => :post, :multipart => true, :target => 'upload_frame' }) do |f| %>
-    Select a file on your computer ( 4MB max ) : <br />
-    <%= f.file_field :uploaded_data %><br />
-    <%= link_to 'Upload', "#my_file", :onclick=>"$(this).up('form').submit(); $('list_files').focus() " %>
-    <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
-  <% end %>
-
-<div class="onecol-simple" id="list_files">
-  <% @files.each do |file| %>
-    <%= render :partial => "files.html", :locals => { :file => file } %>
-  <% end %>
-</div>
-</p>
-<% form_remote_tag :url => jobs_path, :method => :post do %>
-<p>
-  Date : <%= calendar_date_select :job, :date, :popup => :force, :year_range => 100.years.ago..0.years.from_now, :valid_date_check => "date >= (new Date()).stripTime()" %>
-</p>
-<p>
-  Job Title : <%= text_field :job, :job_title %>
-</p>
-<p>
-  Location : <%= text_field :job, :location %>
-</p>
-<p>
-  Body : <%= text_area :job, :body %>
-</p>
-<p>
-  <%= submit_tag "Add Job" %>
-</p>
-<div id="job_list">
-
-</div>
-<% end %>
+<div class="content margin_padding">
+  <div class="pic_header margin_padding">
+    <img src="" alt="head picture"/>
+  </div>
+  <div class="app_clear">&nbsp;</div>
+  <%= render :partial => "/layouts/header.html" %>
+  <div>
+    <div class="pic_header detail_content float_left  margin_padding">
+      <% form_tag save_info_path do %>
+        <div>
+          <div class="content_header"><b>Basic Info</b></div>
+          <div><%= text_area_tag "info[basic_info]", @info["basic_info"], :class => "content_textarea" %></div>
+        </div>
+        <div class="app_clear">&nbsp;</div>
+        <div>
+          <div class="content_header"><b>Detailed Info</b></div>
+          <div><%= text_area_tag "info[detailed_info]", @info["detailed_info"], :class => "content_textarea" %></div>
+        </div>
+        <div>
+          <%= submit_tag "Save info" %>
+        </div>
+        <div class="app_clear">&nbsp;</div>
+      <% end %>
+      <div>
+        <div class="content_header"><b>Files to Download</b></div>
+        <div class="content_textarea">
+          <div class="onecol-simple" id="list_files">
+            <% @files.each do |file| %>
+              <%= render :partial => "files.html", :locals => { :file => file } %>
+            <% end %>
+          </div>
+          <% remote_form_for(:file, :url => save_file_path(:format => "js"), :html => { :method => :post, :multipart => true, :target => 'upload_frame' }) do |f| %>
+            Select a file on your computer ( 4MB max ) : <br />
+            <%= f.file_field :uploaded_data %><br />
+            <%= link_to 'Upload', "#my_file", :onclick=>"$(this).up('form').submit(); $('list_files').focus() " %>
+            <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
+          <% end %>
+        </div>
+      </div>
+      <div class="app_clear">&nbsp;</div>
+      <div>
+        <div class="content_header"><b>Jobs</b></div>
+        <div>
+          <% form_remote_tag :url => jobs_path, :method => :post do %>
+            <div class="admin_job_left float_left">Date</div>
+            <div class="float_left admin_job_right"><%= calendar_date_select :job, :date, :popup => :force, :year_range => 100.years.ago..0.years.from_now, :valid_date_check => "date >= (new Date()).stripTime()" %></div>
+            <div class="clear"></div>
+            <div class="admin_job_left float_left">Job Title</div>
+            <div class="float_left admin_job_right"><%= text_field :job, :job_title %></div>
+            <div class="clear"></div>
+            <div class="admin_job_left float_left">Location</div>
+            <div class="float_left admin_job_right"><%= text_field :job, :location %></div>
+            <div class="clear"></div>
+            <div class="admin_job_left float_left">body</div>
+            <div class="float_left admin_job_right"><%= text_area :job, :body %></div>
+            <div class="clear"></div>
+            <input type="submit" class="float_right margin_padding" value="Add Job"/>
+          <% end %>
+        </div>
+      </div>
+      <div class="app_clear">&nbsp;</div>
+      <div id="job_list">
+        <% @jobs.each do |job| %>
+          <%= render :partial => "/jobs/job_list.html", :locals => { :job => job } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="banner float_left  margin_padding">
+    </div>
+    <div class="clear"></div>
+    <div class="pic_header pic_footer margin_padding">
+      <img src="" alt="foot picture"/>
+    </div>
+  </div>

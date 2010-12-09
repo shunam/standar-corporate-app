@@ -17,6 +17,7 @@ class HomeController < ApplicationController
   def admin
     @info = YAML.load_file("#{RAILS_ROOT}/config/info.yml")
     @files = AppFile.all
+    @jobs = Job.all
   end
 
   def save_file

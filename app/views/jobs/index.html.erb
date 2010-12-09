@@ -1,3 +1,49 @@
-<% @jobs.each do |job| %>
-  <%= render :partial => "job_list", :locals => { :job => job } %>
-<% end %>
+<div class="content margin_padding">
+  <div class="pic_header margin_padding">
+    <img src="" alt="head picture"/>
+  </div>
+  <div class="app_clear">&nbsp;</div>
+  <%= render :partial => "/layouts/header.html" %>
+  <div>
+    <div class="pic_header detail_content float_left  margin_padding">
+      <table width="100%">
+        <col class="col1"/>
+        <col class="col2"/>
+        <col class="col3"/>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Job Title</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="app_clear">&nbsp;</div>
+      <% @jobs.each do |job| %>
+        <div>
+          <div class="float_left">
+            <p class="p_jobs"><%= job.date %></p>
+          </div>
+          <div class="float_left">
+            <p class="p_jobs centering"><%= job.job_title %></p>
+          </div>
+          <div class="float_left">
+            <p class="p_jobs centering"><%= job.location %></p>
+          </div>
+          <div class="float_right">
+            <input type="submit" value="Apply"/>
+          </div>
+          <div class="clear"></div>
+          <div class="separator"></div>
+        </div>
+        <div class="app_clear">&nbsp;</div>
+      <% end %>
+    </div>
+    <div class="banner float_left  margin_padding">
+    </div>
+    <div class="clear"></div>
+    <div class="pic_header pic_footer margin_padding">
+      <img src="" alt="foot picture"/>
+    </div>
+  </div>
+</div>
