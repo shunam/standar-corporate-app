@@ -31,7 +31,7 @@
             <p class="p_jobs centering"><%= job.location %></p>
           </div>
           <div class="float_right">
-            <input type="submit" value="Apply"/>
+            <%= button_to_remote "Apply", :url => apply_job_path(job) %>
           </div>
           <div class="clear"></div>
           <div class="separator"></div>

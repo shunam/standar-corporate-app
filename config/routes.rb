@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.info '/info', :controller => "home", :action => "info"
   map.access_token '/access_token', :controller => "application", :action => "access_token"
 
-  map.resources :jobs
+  map.resources :jobs, :member => { :apply => :post}
   map.resources :walls
 
 

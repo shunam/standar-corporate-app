@@ -3,6 +3,8 @@
     <li><%= link_to "Wall", walls_path %></li>
     <li><%= link_to "Info", info_path %></li>
     <li><%= link_to "Jobs", jobs_path %></li>
-    <li><%= link_to "Admin", admin_path %></li>
+    <% unless session[:id] == session[:creator_id] %>
+      <li><%= link_to "Admin", admin_path %></li>
+    <% end %>
   </ul>
 </div>
