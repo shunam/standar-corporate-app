@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   def access_token
-    consumer = OAuth::Consumer.new FKEY, FSECRET, {:site=>"http://localhost:3000"}
+    consumer = OAuth::Consumer.new FKEY, FSECRET, {:site=> SITE }
 
     request_token = OAuth::RequestToken.new(
       consumer,
