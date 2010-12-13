@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
   def get_authentication
     session[:creator_id] = params[:creator_id] if session[:creator_id].blank?
     if params[:token].blank? && session[:token].blank?
-      consumer=OAuth::Consumer.new FKEY, FSECRET, {:site=> SITE}
+      consumer = OAuth::Consumer.new FKEY, FSECRET, {:site=> SITE}
       request_token = consumer.get_request_token
       session[:request_token] = request_token.token
       session[:request_token_secret] = request_token.secret
