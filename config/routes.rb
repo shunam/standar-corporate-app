@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.send_file '/admin/file/:id/send', :controller => "home", :action => "send_file"
   map.info '/info', :controller => "home", :action => "info"
   map.access_token '/access_token', :controller => "application", :action => "access_token"
+  map.post_message '/post_message', :controller => "home", :action => "post_message", :method => :post
 
   map.resources :jobs, :member => { :apply => :post}
   map.resources :walls

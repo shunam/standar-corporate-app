@@ -7,19 +7,15 @@
   <div>
     <div class="pic_header detail_content float_left  margin_padding">
       <div>
-        <div><textarea class="content_textarea"></textarea></div>
-        <input type="submit" value="Share" class="float_right"/>
+        <% form_remote_tag :url => post_message_path do %>
+          <div><textarea class="content_textarea"></textarea></div>
+          <%= submit_tag "Share", :class => "float_right" %>
+        <% end %>
       </div>
       <div class="app_clear">&nbsp;</div>
-      <div>
-        <div class="avatar_container float_left">
-          <img src="" alt="avatar">
-        </div>
-        <div class="float_left message_container">
-          Public messages
-        </div>
-      </div>
-      <div class="app_clear">&nbsp;</div>
+      <span id="message_list">
+        
+      </span>
       <div>
         <div class="avatar_container float_left">
           <img src="" alt="avatar">
