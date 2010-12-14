@@ -35,20 +35,23 @@ class ApplicationController < ActionController::Base
   private
 
   def prepare_token
-    consumer = OAuth::Consumer.new FKEY, FSECRET, {:site=> SITE}
-    token = Token.find_by_token(session[:token])
-    @access_token = OAuth::AccessToken.new( consumer, token.token, token.secret)
+      consumer = OAuth::Consumer.new FKEY, FSECRET, {:site=> SITE}
+      if session[:token] == FKEY
+        @access_token = OAuth::AccessToken.new( consumer, FKEY, FSECRET)
+      else
+        token = Token.find_by_token(session[:token])
+        @access_token = OAuth::AccessToken.new( consumer, token.token, token.secret)
+      end
   end
 
   def get_authentication
-    session[:creator_id] = params[:creator_id] if session[:creator_id].blank?
     if params[:token].blank? && session[:token].blank?
       consumer = OAuth::Consumer.new FKEY, FSECRET, {:site=> SITE}
       request_token = consumer.get_request_token
       session[:request_token] = request_token.token
       session[:request_token_secret] = request_token.secret
       redirect_to request_token.authorize_url
-    elsif session[:token].blank?
+    elsif !params[:token].blank?
       session[:token] = params[:token]
     end
   end

@@ -1,7 +1,7 @@
 if RAILS_ENV == 'development' || RAILS_ENV == 'test' || RAILS_ENV == 'cucumber'
-  SITE = 'http://localhost:3000'
-  FKEY = "afJkSxi9N30qDhwcm7g"
-  FSECRET = "ewqmnpXpJ4QD7GaDxn4n7Ki6aubWplCs2LV8tY5Q"
+  SITE = 'http://dev.localhost.local:3000'
+  FKEY = "yHrtKI4tnaS8hdnNN8VP"
+  FSECRET = "D4UcudiPAuoZ6XM8ZBeyhosPEV7tzZ9B0hzMWD40"
 else
   SITE = 'http://fellownation.com'
   FKEY = "lO2RiG4jBsAOXVgvJAaQ"
