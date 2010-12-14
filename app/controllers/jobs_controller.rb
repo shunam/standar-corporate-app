@@ -24,7 +24,7 @@ class JobsController < ApplicationController
   def apply
     prepare_token
     job_title = Job.find(params[:id]).job_title
-    response = @access_token.post('/API/apply_job', "user_id=#{params[:fellownation_user_id]}&app_key=#{FKEY}&job_title=#{job_title}")
+    response = @access_token.post('/API/apply_job', "user_id=#{session[:fellownation_user_id]}&app_key=#{FKEY}&job_title=#{job_title}")
     render :update do |page|
       case response
       when Net::HTTPSuccess

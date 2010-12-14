@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     )
 
     Token.create( :token => access_token.token, :secret => access_token.secret)
-    session["token_#{params[:fellownation_user_id]}"] = access_token.token
+    session["token_#{session[:fellownation_user_id]}"] = access_token.token
 
     redirect_to root_path
   end
@@ -35,19 +35,19 @@ class ApplicationController < ActionController::Base
 
   def prepare_token
       consumer = OAuth::Consumer.new FKEY, FSECRET, {:site=> SITE}
-      if session["token_#{params[:fellownation_user_id]}"] == FKEY
+      if session["token_#{session[:fellownation_user_id]}"] == FKEY
         @access_token = OAuth::AccessToken.new( consumer, FKEY, FSECRET)
       else
-        token = Token.find_by_token(session["token_#{params[:fellownation_user_id]}"])
+        token = Token.find_by_token(session["token_#{session[:fellownation_user_id]}"])
         @access_token = OAuth::AccessToken.new( consumer, token.token, token.secret)
       end
   end
 
   def get_authentication
-    
+    session[:fellownation_user_id] = params[:fellownation_user_id] unless params[:fellownation_user_id].blank?
     if !params[:token].blank?
-      session["token_#{params[:fellownation_user_id]}"] = params[:token]
-    elsif session["token_#{params[:fellownation_user_id]}"].blank?
+      session["token_#{session[:fellownation_user_id]}"] = params[:token]
+    elsif session["token_#{session[:fellownation_user_id]}"].blank?
       consumer = OAuth::Consumer.new FKEY, FSECRET, {:site=> SITE}
       request_token = consumer.get_request_token
       session[:request_token] = request_token.token
