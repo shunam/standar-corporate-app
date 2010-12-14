@@ -52,7 +52,7 @@ class HomeController < ApplicationController
 
   def post_message
     prepare_token
-    response = @access_token.post('/API/wall_message_from_app', "user_id=#{session[:id]}&app_key=#{FKEY}&message=#{params[:message]}")
+    response = @access_token.post('/API/wall_message_from_app', "user_id=#{params[:fellownation_user_id]}&app_key=#{FKEY}&message=#{params[:message]}")
     render :update do |page|
       case response
       when Net::HTTPSuccess
