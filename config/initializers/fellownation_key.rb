@@ -4,6 +4,6 @@ if RAILS_ENV == 'development' || RAILS_ENV == 'test' || RAILS_ENV == 'cucumber'
   FSECRET = "4BUxEmOEqMSiswNB37GwhXBmz77v5fczaxkswSYu"
 else
   SITE = 'http://fellownation.com'
-  FKEY = "nODvh8Yv1JbRECh419wk"
-  FSECRET = "bpndsoPa6e7eGHeIDkSfjUo08HrXumvS0lezSfRu"
+  FKEY = "DNp4TyrgTMQdIR24nRmB"
+  FSECRET = "uw5d7JZvHMPOrWy599IdSmQ2xIOBavN3EJV2BScc"
 end
