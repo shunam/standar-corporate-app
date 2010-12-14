@@ -26,8 +26,7 @@ class ApplicationController < ActionController::Base
     )
 
     Token.create( :token => access_token.token, :secret => access_token.secret)
-    session[:token] = access_token.token
-    session[:id] = ActiveSupport::JSON.decode(access_token.post('/API/user_info', "token=#{session[:token]}").body)["id"]
+    session["token_#{params[:id]}"] = access_token.token
 
     redirect_to root_path
   end
@@ -36,23 +35,24 @@ class ApplicationController < ActionController::Base
 
   def prepare_token
       consumer = OAuth::Consumer.new FKEY, FSECRET, {:site=> SITE}
-      if session[:token] == FKEY
+      if session["token_#{params[:id]}"] == FKEY
         @access_token = OAuth::AccessToken.new( consumer, FKEY, FSECRET)
       else
-        token = Token.find_by_token(session[:token])
+        token = Token.find_by_token(session["token_#{params[:id]}"])
         @access_token = OAuth::AccessToken.new( consumer, token.token, token.secret)
       end
   end
 
   def get_authentication
-    if params[:token].blank? && session[:token].blank?
+    
+    if !params[:token].blank?
+      session["token_#{params[:id]}"] = params[:token]
+    elsif session["token_#{params[:id]}"].blank?
       consumer = OAuth::Consumer.new FKEY, FSECRET, {:site=> SITE}
       request_token = consumer.get_request_token
       session[:request_token] = request_token.token
       session[:request_token_secret] = request_token.secret
       redirect_to request_token.authorize_url
-    elsif !params[:token].blank?
-      session[:token] = params[:token]
     end
   end
 end
