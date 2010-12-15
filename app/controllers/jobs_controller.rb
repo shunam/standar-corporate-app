@@ -25,9 +25,9 @@ class JobsController < ApplicationController
     prepare_token
     job_title = Job.find(params[:id]).job_title
     response = @access_token.post('/API/apply_job', "user_id=#{session[:fellownation_user_id]}&app_key=#{FKEY}&job_title=#{job_title}")
+    result = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
-      case response
-      when Net::HTTPSuccess
+      if Net::HTTPSuccess && result == "success"
         page.alert "PM sent !"
       else
         page.alert "Could you try it later ? Something went wrong."

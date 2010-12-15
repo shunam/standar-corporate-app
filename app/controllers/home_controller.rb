@@ -49,17 +49,4 @@ class HomeController < ApplicationController
     file = AppFile.find(params[:id])
     send_data(file.image_data,:type => file.content_type, :filename => file.filename)
   end
-
-  def post_message
-    prepare_token
-    response = @access_token.post('/API/wall_message_from_app', "user_id=#{session[:fellownation_user_id]}&app_key=#{FKEY}&message=#{params[:message]}")
-    render :update do |page|
-      case response
-      when Net::HTTPSuccess
-        page.alert "PM sent !"
-      else
-        page.alert "Could you try it later ? Something went wrong."
-      end
-    end
-  end
 end
