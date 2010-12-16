@@ -1,6 +1,6 @@
 <div>
   <div class="avatar_container float_left">
-    <img src="<%= image %>" alt="avatar" style="height:60px; width: 60px;">
+    <img src="<%= get_image((user_id rescue ''), (candidate_profile_id rescue '')) %>" alt="avatar" style="height:60px; width: 60px;">
   </div>
   <div class="float_left message_container">
     <%= message %>
