@@ -44,11 +44,27 @@ class WallsController < ApplicationController
   end
 
   def favorite_message
-
+    response = @access_token.post('/API/favorite_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
+    result = ActiveSupport::JSON.decode(response.body)["results"]
+    render :update do |page|
+      if Net::HTTPSuccess && result == "success"
+        page.replace_html "favorite_#{params[:message_id]}", :partial => "link_favorite_unfavorite", :locals => { :message_id => params[:message_id], :is_favorite => true }
+      else
+        page.alert "Could you try it later ? Something went wrong."
+      end
+    end
   end
 
   def unfavorite_message
-
+    response = @access_token.post('/API/unfavorite_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
+    result = ActiveSupport::JSON.decode(response.body)["results"]
+    render :update do |page|
+      if Net::HTTPSuccess && result == "success"
+        page.replace_html "favorite_#{params[:message_id]}", :partial => "link_favorite_unfavorite", :locals => { :message_id => params[:message_id], :is_favorite => false }
+      else
+        page.alert "Could you try it later ? Something went wrong."
+      end
+    end
   end
 
   def comment_message
