@@ -18,7 +18,7 @@
       <div class="app_clear">&nbsp;</div>
       <span id="message_list">
         <% @wall_messages.each do |wm| %>
-          <%= render :partial => "message_list", :locals => { :message => wm["message"], :candidate_profile_id => wm["candidate_profile_id"] } %>
+          <%= render :partial => "message_list", :locals => { :message => wm } %>
         <% end %>
       </span>
     </div>

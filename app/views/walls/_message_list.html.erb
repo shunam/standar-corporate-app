@@ -1,9 +1,19 @@
 <div>
   <div class="avatar_container float_left">
-    <img src="<%= get_image((user_id rescue ''), (candidate_profile_id rescue '')) %>" alt="avatar" style="height:60px; width: 60px;">
+    <img src="<%= get_image(message["candidate_profile_id"]) %>" alt="avatar" style="height:60px; width: 60px;">
   </div>
   <div class="float_left message_container">
-    <%= message %>
+    <%= message["message"] %> <br />
+    <span id="like_<%= message["id"].to_s %>">
+      <%= unless  message["likes"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
+        render :partial => "link_like_unlike", :locals => { :message_id => message["id"].to_s, :is_like => false }
+      else
+        render :partial => "link_like_unlike", :locals => { :message_id => message["id"].to_s, :is_like => true }
+      end %>
+    </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_like_'+message["id"].to_s %>|
+    
+    <%= 'like' %> |
+    <%= 'favorite' %>
   </div>
 </div>
 <div class="app_clear">&nbsp;</div>
