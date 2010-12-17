@@ -1,8 +1,8 @@
 <div>
   <div class="avatar_container float_left">
-    <img src="<%= get_image(message["candidate_profile_id"]) %>" alt="avatar" style="height:60px; width: 60px;">
+    <img src="<%= get_image("candidate_profile_id" => message["candidate_profile_id"]) %>" alt="avatar" style="height:60px; width: 60px;">
   </div>
-  <div class="float_left message_container">
+  <div class="float_left message_container" style="height:auto">
     <%= message["message"] %> <br />
     <span id="like_<%= message["id"].to_s %>">
       <%= unless  message["likes"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
@@ -10,16 +10,33 @@
       else
         render :partial => "link_like_unlike", :locals => { :message_id => message["id"].to_s, :is_like => true }
       end %>
-    </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_like_'+message["id"].to_s %>|
-    
+    </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_like_'+message["id"].to_s %> |
+
     <span id="favorite_<%= message["id"].to_s %>">
-    
       <%= unless  message["favorites"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
         render :partial => "link_favorite_unfavorite", :locals => { :message_id => message["id"].to_s, :is_favorite => false }
       else
         render :partial => "link_favorite_unfavorite", :locals => { :message_id => message["id"].to_s, :is_favorite => true }
       end %>
-    </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_favorite_'+message["id"].to_s %>|
+    </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_favorite_'+message["id"].to_s %> |
+
+      <%= link_to "Comment", "#", :onclick => "jQuery('#comment_#{message["id"].to_s}').toggle()" %>
+    <div id="comment_<%= message["id"].to_s %>" style="display: none" >
+      <% form_remote_tag :url => comment_message_path(message["id"]), :method => :post,
+        :loading => "$('spinner_share_#{message["id"]}').show(); $('button_share_#{message["id"]}').hide()",
+        :complete => "$('spinner_share_#{message["id"]}').hide(); $('button_share_#{message["id"]}').show()" do %>
+        <%= text_area_tag "comment" %>
+        <%= submit_tag "Share", :id => "button_share_#{message["id"]}" %>
+        <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_share_'+message["id"].to_s %>
+      <% end %>
+    </div>
+
+    <div id="comment_list_<%= message["id"].to_s %>">
+      <% message["comments"].each do |comment| %>
+        <%= render :partial => "comment_list", :locals => { :comment => comment } %>
+      <% end %>
+    </div>
+    
   </div>
 </div>
 <div class="app_clear">&nbsp;</div>

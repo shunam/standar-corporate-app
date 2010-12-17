@@ -68,7 +68,21 @@ class WallsController < ApplicationController
   end
 
   def comment_message
+    render :update do |page|
+      unless params[:comment].blank?
+        response = @access_token.post('/API/comment_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}&comment=#{params[:comment]}")
+        result = ActiveSupport::JSON.decode(response.body)["results"]
+        comment = {"comment"=> params[:comment], "user_id" => session[:fellownation_user_id] }
 
+        if Net::HTTPSuccess && result == "success"
+          page.insert_html :top, "comment_list_#{params[:message_id].to_s}", :partial => "comment_list", :locals => { :comment => comment }
+        else
+          page.alert "Could you try it later ? Something went wrong."
+        end
+      else
+        page.alert "Comment can't be empty !"
+      end
+    end
   end
 
 end

@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.unlike_message '/message/unlike/:message_id', :controller => "walls", :action => "unlike_message", :method => :post
   map.favorite_message '/message/favorite/:message_id', :controller => "walls", :action => "favorite_message", :method => :post
   map.unfavorite_message '/message/unfavorite/:message_id', :controller => "walls", :action => "unfavorite_message", :method => :post
-  map.comment_message '/message/comment/:i:message_idd', :controller => "walls", :action => "comment_message", :method => :post
+  map.comment_message '/message/comment/:message_id', :controller => "walls", :action => "comment_message", :method => :post
 
   map.resources :jobs, :member => { :apply => :post}
   map.resources :walls
