@@ -1,9 +1,9 @@
 <% unless is_like %>
   <%= link_to_remote 'Like', { :url => like_message_path(message_id.to_s), :method => :post,
     :loading => "$('spinner_like_#{message_id}').show(); $('link_like_#{message_id}').hide()",
-    :complete => "$('spinner_like_#{message_id}').hide(); $('link_like_#{message_id}').show()" }, :id => 'link_like_'+message_id.to_s %>
+    :complete => "$('spinner_like_#{message_id}').hide(); $('link_like_#{message_id}').show()" }, :id => 'link_like_'+message_id.to_s, :class => "wallContent" %>
 <% else %>
   <%= link_to_remote 'Unlike', { :url => unlike_message_path(message_id.to_s), :method => :post,
     :loading => "$('spinner_like_#{message_id}').show(); $('link_like_#{message_id}').hide()",
-    :complete => "$('spinner_like_#{message_id}').hide(); $('link_like_#{message_id}').show()" }, :id => 'link_like_'+message_id.to_s %>
+    :complete => "$('spinner_like_#{message_id}').hide(); $('link_like_#{message_id}').show()" }, :id => 'link_like_'+message_id.to_s, :class => "wallContent like" %>
 <% end %>
