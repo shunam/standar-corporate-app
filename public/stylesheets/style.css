@@ -1,3 +1,9 @@
+body{
+    font-family: arial;
+}
+a{
+    color: #5599BB;
+}
 .app_clear{
     clear: both;
 }
@@ -12,11 +18,12 @@
     padding: 5px;
 }
 .pic_header{
-    width: 520px;
-    height: 125px;
+    width: 738px;
+    height: 80px;
+    background-color: white;
 }
 .pic_footer{
-    height: 50px;
+    height: 200px;
 }
 .detail_content{
     height: 400px;
@@ -25,7 +32,7 @@
     border: 1px solid black;
 }
 .content{
-    width: 520px;
+    width: 760px;
 }
 .content ul{
     list-style-type: none;
@@ -48,10 +55,11 @@
     left: 1px;
     position: relative;
     top: -1px;
-    width: 500px;
+    width: 735px;
 }
 .textarea_job{
     width: 390px;
+    border: 2px solid #EEEEEE
 }
 .admin_job_left{
     width: 100px;
@@ -85,11 +93,40 @@
 .avatar_container{
     width: 60px;
     height: 60px;
-    border: 1px solid;
 }
 .message_container{
-    height: 60px;
+    height: auto;
     border: 1px solid;
     margin-left: 5px;
-    width: 435px;
+    width: 658px;
+    padding: 5px;
 }
+.comment_on_comment{
+    width: 640px;
+    padding: 5px;
+}
+.other_user_comment{
+    height: auto;
+    margin-left: 5px;
+    padding: 5px;
+    width: 560px;
+}
+.sendBtn{
+    -moz-border-radius: 5px;
+    background: url("/images/button3.png") repeat scroll 0 0 #D9D8D8;
+    border: 1px solid #C0C0C0;
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+    padding: 5px;
+}
+/*like a comment*/
+.wallContent.like {
+    background: url("/images/like.png") no-repeat scroll 5px 50% #DDEDF6;
+    padding: 5px 10px 5px 25px;
+}
+.wallContent {
+    background: none repeat scroll 0 0 #DDEDF6;
+    margin-bottom: 3px;
+    padding: 5px;
