@@ -1,7 +1,7 @@
 body{
     font-family: arial;
 }
-a{
+.a_href{
     color: #5599BB;
 }
 .app_clear{
@@ -26,7 +26,7 @@ a{
     height: 200px;
 }
 .detail_content{
-    height: 400px;
+    height: 320px;
     overflow: scroll;
     overflow-x: hidden;
     border: 1px solid black;
@@ -96,7 +96,6 @@ a{
 }
 .message_container{
     height: auto;
-    border: 1px solid;
     margin-left: 5px;
     width: 658px;
     padding: 5px;
@@ -120,6 +119,9 @@ a{
     font-weight: bold;
     margin-left: 10px;
     padding: 5px;
+}
+.commonBox2{
+    border: 3px solid #5599BB;
 }
 /*like a comment*/
 .wallContent.like {

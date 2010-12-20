@@ -1,9 +1,9 @@
 <% unless is_favorite %>
   <%= link_to_remote 'Favorite', { :url => favorite_message_path(message_id.to_s), :method => :post,
     :loading => "$('spinner_favorite_#{message_id}').show(); $('link_favorite_#{message_id}').hide()",
-    :complete => "$('spinner_favorite_#{message_id}').hide(); $('link_favorite_#{message_id}').show()" }, :id => 'link_favorite_'+message_id.to_s %>
+    :complete => "$('spinner_favorite_#{message_id}').hide(); $('link_favorite_#{message_id}').show()" }, :id => 'link_favorite_'+message_id.to_s, :class => "a_href" %>
 <% else %>
   <%= link_to_remote 'Unfavorite', { :url => unfavorite_message_path(message_id.to_s), :method => :post,
     :loading => "$('spinner_favorite_#{message_id}').show(); $('link_favorite_#{message_id}').hide()",
-    :complete => "$('spinner_favorite_#{message_id}').hide(); $('link_favorite_#{message_id}').show()" }, :id => 'link_favorite_'+message_id.to_s %>
+    :complete => "$('spinner_favorite_#{message_id}').hide(); $('link_favorite_#{message_id}').show()" }, :id => 'link_favorite_'+message_id.to_s, :class => "a_href" %>
 <% end %>

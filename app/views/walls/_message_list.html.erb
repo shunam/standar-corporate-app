@@ -20,12 +20,12 @@
       end %>
     </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_favorite_'+message["id"].to_s %> |
 
-      <%= link_to "Comment", "#", :onclick => "jQuery('#comment_#{message["id"].to_s}').toggle()" %>
+      <%= link_to "Comment", "#", :onclick => "jQuery('#comment_#{message["id"].to_s}').toggle()", :class => "a_href" %>
     <div id="comment_<%= message['id'].to_s %>" style="display: none" >
       <% form_remote_tag :url => comment_message_path(message["id"]), :method => :post,
         :loading => "$('spinner_share_#{message["id"]}').show(); $('button_share_#{message["id"]}').hide()",
         :complete => "$('spinner_share_#{message["id"]}').hide(); $('button_share_#{message["id"]}').show()" do %>
-        <%= text_area "comment", :class => "comment_on_comment" %>
+        <%= text_area_tag "comment", :class => "comment_on_comment" %>
         <br/>
         <%= submit_tag "Share", :id => "button_share_#{message["id"]}", :class => "float_right sendBtn" %>
         <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_share_'+message["id"].to_s %>
