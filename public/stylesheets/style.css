@@ -1,5 +1,6 @@
 body{
     font-family: arial;
+    font-size: 12px;
 }
 .a_href{
     color: #5599BB;
@@ -55,7 +56,7 @@ body{
     left: 1px;
     position: relative;
     top: -1px;
-    width: 735px;
+    width: 715px;
 }
 .textarea_job{
     width: 390px;
@@ -97,7 +98,7 @@ body{
 .message_container{
     height: auto;
     margin-left: 5px;
-    width: 658px;
+    width: 640px;
     padding: 5px;
 }
 .comment_on_comment{
