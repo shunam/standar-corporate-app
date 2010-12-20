@@ -4,8 +4,8 @@
   </div>
   <div class="app_clear">&nbsp;</div>
   <%= render :partial => "/layouts/header.html" %>
-  <div class="commonBox2">
-    <div class="pic_header detail_content float_left  margin_padding">
+  <div>
+    <div class="pic_header detail_content float_left margin_padding">
       <div>
         <% form_remote_tag :url => post_message_path, :method => :post,
               :loading => "$('spinner_share').show(); $('button_share').hide()",
@@ -25,8 +25,8 @@
     <div class="banner float_left  margin_padding">
     </div>
     <div class="clear"></div>
-    <div class="pic_header pic_footer margin_padding">
-      <img src="/images/rtbf_footer.png" alt="foot picture"/>
-    </div>
+  </div>
+  <div class="pic_header pic_footer margin_padding">
+    <img src="/images/rtbf_footer.png" alt="foot picture"/>
   </div>
 </div>
