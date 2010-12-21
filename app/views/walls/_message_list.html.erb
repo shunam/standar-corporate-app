@@ -1,9 +1,11 @@
 <div>
   <div class="avatar_container float_left">
-    <img src="<%= get_image('candidate_profile_id' => message['candidate_profile_id']) %>" alt="avatar" style="height:60px; width: 60px;">
+    <img src="<%= get_image('candidate_profile_id' => message['candidate_profile_id']) %>" alt="avatar"/>
+    <img src="/images/badge.png" alt="avatar" class="badge"/>
   </div>
   <div class="float_left message_container comment_container">
     <%= message["message"] %> <br />
+    <span class="strong" class="time"><%= "wrote on #{profile.user.name}'s wall" if !profile.blank? && profile != my_profile %></span>
     <span id="like_<%= message['id'].to_s %>">
       <%= unless  message["likes"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
         render :partial => "link_like_unlike", :locals => { :message_id => message["id"].to_s, :is_like => false }
@@ -32,7 +34,7 @@
       <% end %>
     </div>
     <div class="app_clear">&nbsp;</div>
-    <div id="comment_list_<%= message['id'].to_s %>">
+    <div id="comment_list_<%= message['id'].to_s %>" class="wallContent">
       <% message["comments"].each do |comment| %>
         <%= render :partial => "comment_list", :locals => { :comment => comment } %>
       <% end %>

@@ -1,9 +1,10 @@
 body{
     font-family: arial;
-    font-size: 12px;
+    font-size: 10px;
 }
 .a_href{
     color: #5599BB;
+    font-size: 10px;
 }
 .app_clear{
     clear: both;
@@ -122,7 +123,29 @@ body{
     margin-left: 10px;
     padding: 5px;
 }
+#message_list{
+    border-bottom: 1px solid #C0C0C0;
+}
+/*avatar badge*/
+.badge{
+    padding-top: 3px; height: 14px; width: 50px;
+}
+.thumb{
+    element.style {
+    height: 14px;
+    width: 14px;
+}
+.wallBadge {
+    float: left;
+    height: 14px;
+    margin-right: 10px;
+    width: 14px;
+}
 /*like a comment*/
+.time{
+    color: #5599BB;
+    font-size: 10px;
+}
 .wallContent.like {
     background: url("/images/like.png") no-repeat scroll 5px 50% #DDEDF6;
     padding: 5px 10px 5px 25px;
@@ -131,3 +154,38 @@ body{
     background: none repeat scroll 0 0 #DDEDF6;
     margin-bottom: 3px;
     padding: 5px;
+}
+/*other user comment*/
+.wallContent {
+    background: none repeat scroll 0 0 #DDEDF6;
+    margin-bottom: 3px;
+    padding: 5px;
+}
+/*fellownation tab*/
+#tabsnav li {
+    float: left;
+    margin-right: -1px;
+}
+.application #tabsnav li a{
+    height: 45px;
+    line-height: 23px;
+    padding: 5px 10px;
+    width: 163px;
+}
+#tabsnav .ui-state-active a {
+    background: url("/images/tabs.png") repeat-x scroll 0 0 #5599BB;
+    color: #FFFFFF;
+}
+#tabsnav li a {
+    background: none repeat scroll 0 0 #DDEDF6;
+    border: 1px solid #70AAC7;
+    color: #000000;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+}
+.removeStyleLink {
+    height: auto !important;
+    width: auto !important;
