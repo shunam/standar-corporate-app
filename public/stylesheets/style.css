@@ -1,5 +1,5 @@
 html{
-    font-family: arial;
+    font-family: arial !important;
 }
 .a_href{
     color: #5599BB;
@@ -39,7 +39,6 @@ html{
 }
 .content li{
     display: inline-block;
-    margin-left: 68px !important;
 }
 .detail_content li a:hover{
     color: blue;
@@ -92,6 +91,11 @@ html{
     width: 83px;
 }
 .avatar_container{
+    width: 75px;
+    height: 60px;
+    margin-right: 10px;
+}
+.avatar{
     width: 60px;
     height: 60px;
 }
@@ -129,8 +133,9 @@ html{
     width: 60px;
 }
 .thumb{
-    height: 14px;
-    width: 14px;
+    height: 15px;
+    width: 15px;
+    float: left;
 }
 .wallBadge {
     float: left;
@@ -140,7 +145,6 @@ html{
 }
 /*like a comment*/
 .time{
-    color: #EEEEEE;
     font-size: 10px;
 }
 .wallContent.like {
@@ -152,19 +156,12 @@ html{
     margin-bottom: 3px;
     padding: 5px;
 }
-/*other user comment*/
-.wallContent {
-    background: none repeat scroll 0 0 #DDEDF6;
-    margin-bottom: 3px;
-    padding: 5px;
-}
 /*fellownation tab*/
 #tabsnav li {
     float: left;
     margin-right: -1px;
 }
 .application #tabsnav li a{
-    height: 45px;
     line-height: 23px;
     padding: 5px 10px;
     width: 163px;
@@ -186,3 +183,4 @@ html{
 .removeStyleLink {
     height: auto !important;
     width: auto !important;
+}
