@@ -91,7 +91,7 @@ html{
     width: 83px;
 }
 .avatar_container_comment{
-    width: 75px;
+    width: 80px;
     height: 60px;
 }
 .avatar_container{
@@ -117,7 +117,7 @@ html{
     height: auto;
     margin-left: 5px;
     padding: 5px;
-    width: 560px;
+    width: 520px;
 }
 .sendBtn{
     -moz-border-radius: 5px;
@@ -149,7 +149,7 @@ html{
 }
 /*like a comment*/
 .firstEntry {
-    background: url("/images/topEntryBlue.png") no-repeat scroll 10px 0 transparent;
+    background: url("/images/first.png") no-repeat scroll 10px 0 transparent;
     height: 5px;
     line-height: 5px;
     overflow: hidden;
@@ -184,7 +184,7 @@ html{
     padding: 5px 10px;
     width: 163px;
 }
-#tabsnav .selected a {
+#tabsnav .selected{
     background: url("/images/tabs.png") repeat-x scroll 0 0 #5599BB;
     color: #FFFFFF;
 }
