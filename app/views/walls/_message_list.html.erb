@@ -32,7 +32,9 @@
         <%= submit_tag "Share", :id => "button_share_#{message["id"]}", :class => "float_right sendBtn" %>
         <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_share_'+message["id"].to_s %>
       <% end %>
+      <div class="app_clear"></div>
     </div>
+    <div class="app_clear">&nbsp;</div>
     <div class="firstEntry">&nbsp;</div>
     <div id="comment_list_<%= message['id'].to_s %>">
       <% message["comments"].each do |comment| %>
