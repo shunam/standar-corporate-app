@@ -1,8 +1,11 @@
-<div class="avatar_container float_left">
-  <img src="<%= get_image(comment) %>" alt="avatar"/>
-  <img src="/images/employee.png" class="thumb"/>
+<div class="wallContent">
+  <div class="avatar_container_comment float_left">
+    <img src="<%= get_image(comment) %>" alt="avatar" class="avatar"/>
+    <img src="/images/employee.png" class="thumb"/>
+  </div>
+  <div class="float_left other_user_comment">
+    <%= comment["comment"] %><br/>
+    <span class="time">1 hours ago</span>
+  </div>
+  <div class="app_clear"></div>
 </div>
-<div class="float_left other_user_comment">
-  <%= comment["comment"] %>
-</div>
-<div class="app_clear">&nbsp;</div>

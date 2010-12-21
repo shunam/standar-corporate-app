@@ -1,6 +1,5 @@
-body{
-    font-family: arial;
-    font-size: 10px;
+html{
+    font-family: arial !important;
 }
 .a_href{
     color: #5599BB;
@@ -28,9 +27,8 @@ body{
     height: 200px;
 }
 .detail_content{
-    height: 320px;
-    overflow: scroll;
-    overflow-x: hidden;
+    height: auto;
+    overflow: hidden;
     border: 3px solid #5599BB;
 }
 .content{
@@ -41,7 +39,6 @@ body{
 }
 .content li{
     display: inline-block;
-    margin-left: 68px !important;
 }
 .detail_content li a:hover{
     color: blue;
@@ -57,7 +54,7 @@ body{
     left: 1px;
     position: relative;
     top: -1px;
-    width: 715px;
+    width: 733px;
     border: 2px solid #EEEEEE;
 }
 .textarea_job{
@@ -93,7 +90,16 @@ body{
 .col3{
     width: 83px;
 }
+.avatar_container_comment{
+    width: 80px;
+    height: 60px;
+}
 .avatar_container{
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+.avatar{
     width: 60px;
     height: 60px;
 }
@@ -104,14 +110,14 @@ body{
     padding: 5px;
 }
 .comment_on_comment{
-    width: 640px;
+    width: 627px;
     padding: 5px;
 }
 .other_user_comment{
     height: auto;
     margin-left: 5px;
     padding: 5px;
-    width: 560px;
+    width: 520px;
 }
 .sendBtn{
     -moz-border-radius: 5px;
@@ -123,17 +129,17 @@ body{
     margin-left: 10px;
     padding: 5px;
 }
-#message_list{
+.message_list{
     border-bottom: 1px solid #C0C0C0;
 }
 /*avatar badge*/
 .badge{
-    padding-top: 3px; height: 14px; width: 50px;
+    width: 60px;
 }
 .thumb{
-    element.style {
-    height: 14px;
-    width: 14px;
+    height: 20px;
+    width: 20px;
+    float: right;
 }
 .wallBadge {
     float: left;
@@ -142,8 +148,13 @@ body{
     width: 14px;
 }
 /*like a comment*/
+.firstEntry {
+    background: url("/images/first.png") no-repeat scroll 10px 0 transparent;
+    height: 5px;
+    line-height: 5px;
+    overflow: hidden;
+}
 .time{
-    color: #5599BB;
     font-size: 10px;
 }
 .wallContent.like {
@@ -155,24 +166,25 @@ body{
     margin-bottom: 3px;
     padding: 5px;
 }
-/*other user comment*/
-.wallContent {
-    background: none repeat scroll 0 0 #DDEDF6;
-    margin-bottom: 3px;
-    padding: 5px;
+.wallContent.star {
+    background: url("/images/star.png") no-repeat scroll 5px 50% #DDEDF6;
+    padding: 5px 10px 5px 25px;
+}
+.wallContent.comment {
+    background: url("/images/comment.png") no-repeat scroll 5px 50% #DDEDF6;
+    padding: 5px 10px 5px 25px;
 }
 /*fellownation tab*/
 #tabsnav li {
     float: left;
     margin-right: -1px;
 }
-.application #tabsnav li a{
-    height: 45px;
+#tabsnav li a{
     line-height: 23px;
     padding: 5px 10px;
     width: 163px;
 }
-#tabsnav .ui-state-active a {
+#tabsnav .selected{
     background: url("/images/tabs.png") repeat-x scroll 0 0 #5599BB;
     color: #FFFFFF;
 }
@@ -186,6 +198,3 @@ body{
     padding: 5px;
     text-align: center;
 }
-.removeStyleLink {
-    height: auto !important;
-    width: auto !important;

@@ -1,13 +1,12 @@
-<div class="application">
-  <div class="tabs">
-    <ul id="tabsnav">
-      <li><%= link_to "Wall", walls_path %></li>
-      <li><%= link_to "Info", info_path %></li>
-      <li><%= link_to "Jobs", jobs_path %></li>
-      <% if session["token_#{session[:fellownation_user_id]}"] == FKEY %>
-        <li><%= link_to "Admin", admin_path %></li>
-      <% end %>
-    </ul>
-  </div>
+<div class="tabs">
+  <ul id="tabsnav">
+  	<ul id="tabsnav">
+    <li class="selected" ><%= link_to "Wall", walls_path %></li>
+    <li><%= link_to "Info", info_path %></li>
+    <li><%= link_to "Jobs", jobs_path %></li>
+    <% if session["token_#{session[:fellownation_user_id]}"] == FKEY %>
+      <li><%= link_to "Admin", admin_path %></li>
+    <% end %>
+  </ul>
 </div>
 <div class="app_clear">&nbsp;</div>
