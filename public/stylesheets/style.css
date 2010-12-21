@@ -1,6 +1,5 @@
-body{
+html{
     font-family: arial;
-    font-size: 10px;
 }
 .a_href{
     color: #5599BB;
@@ -28,9 +27,8 @@ body{
     height: 200px;
 }
 .detail_content{
-    height: 320px;
-    overflow: scroll;
-    overflow-x: hidden;
+    height: auto;
+    overflow: hidden;
     border: 3px solid #5599BB;
 }
 .content{
@@ -57,7 +55,7 @@ body{
     left: 1px;
     position: relative;
     top: -1px;
-    width: 715px;
+    width: 733px;
     border: 2px solid #EEEEEE;
 }
 .textarea_job{
@@ -128,10 +126,9 @@ body{
 }
 /*avatar badge*/
 .badge{
-    padding-top: 3px; height: 14px; width: 50px;
+    width: 60px;
 }
 .thumb{
-    element.style {
     height: 14px;
     width: 14px;
 }
