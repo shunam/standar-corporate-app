@@ -3,9 +3,9 @@ module ApplicationHelper
 
   def get_image(params = {})
     if !params["candidate_profile_id"].blank?
-      image = ActiveSupport::JSON.decode(@access_token.post('/API/user_info', "candidate_profile_id=#{params["candidate_profile_id"]}").body)["photo"]
+      image = ActiveSupport::JSON.decode(@access_token.post('/API/user_info', "candidate_profile_id=#{params["candidate_profile_id"]}").body)["results"]["photo"]
     elsif !params["user_id"].blank?
-      image = ActiveSupport::JSON.decode(@access_token.post('/API/user_info', "user_id=#{params["user_id"]}").body)["photo"]
+      image = ActiveSupport::JSON.decode(@access_token.post('/API/user_info', "user_id=#{params["user_id"]}").body)["results"]["photo"]
     end
     return image
   end
