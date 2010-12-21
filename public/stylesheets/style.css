@@ -90,8 +90,12 @@ html{
 .col3{
     width: 83px;
 }
-.avatar_container{
+.avatar_container_comment{
     width: 75px;
+    height: 60px;
+}
+.avatar_container{
+    width: 60px;
     height: 60px;
     margin-right: 10px;
 }
@@ -125,7 +129,7 @@ html{
     margin-left: 10px;
     padding: 5px;
 }
-#message_list{
+.message_list{
     border-bottom: 1px solid #C0C0C0;
 }
 /*avatar badge*/
@@ -133,9 +137,9 @@ html{
     width: 60px;
 }
 .thumb{
-    height: 15px;
-    width: 15px;
-    float: left;
+    height: 20px;
+    width: 20px;
+    float: right;
 }
 .wallBadge {
     float: left;
@@ -144,6 +148,12 @@ html{
     width: 14px;
 }
 /*like a comment*/
+.firstEntry {
+    background: url("/images/topEntryBlue.png") no-repeat scroll 10px 0 transparent;
+    height: 5px;
+    line-height: 5px;
+    overflow: hidden;
+}
 .time{
     font-size: 10px;
 }
@@ -156,17 +166,25 @@ html{
     margin-bottom: 3px;
     padding: 5px;
 }
+.wallContent.star {
+    background: url("/images/star.png") no-repeat scroll 5px 50% #DDEDF6;
+    padding: 5px 10px 5px 25px;
+}
+.wallContent.comment {
+    background: url("/images/comment.png") no-repeat scroll 5px 50% #DDEDF6;
+    padding: 5px 10px 5px 25px;
+}
 /*fellownation tab*/
 #tabsnav li {
     float: left;
     margin-right: -1px;
 }
-.application #tabsnav li a{
+#tabsnav li a{
     line-height: 23px;
     padding: 5px 10px;
     width: 163px;
 }
-#tabsnav .ui-state-active a {
+#tabsnav .selected a {
     background: url("/images/tabs.png") repeat-x scroll 0 0 #5599BB;
     color: #FFFFFF;
 }
@@ -179,8 +197,4 @@ html{
     font-weight: bold;
     padding: 5px;
     text-align: center;
-}
-.removeStyleLink {
-    height: auto !important;
-    width: auto !important;
 }

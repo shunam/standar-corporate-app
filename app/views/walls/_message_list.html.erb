@@ -33,8 +33,8 @@
         <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_share_'+message["id"].to_s %>
       <% end %>
     </div>
-    <div class="app_clear">&nbsp;</div>
-    <div id="comment_list_<%= message['id'].to_s %>" class="wallContent">
+    <div class="firstEntry">&nbsp;</div>
+    <div id="comment_list_<%= message['id'].to_s %>">
       <% message["comments"].each do |comment| %>
         <%= render :partial => "comment_list", :locals => { :comment => comment } %>
       <% end %>
