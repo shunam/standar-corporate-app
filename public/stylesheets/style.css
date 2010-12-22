@@ -1,5 +1,6 @@
 html{
     font-family: arial !important;
+    font-size: 10px;
 }
 .a_href{
     color: #5599BB;
@@ -78,8 +79,14 @@ html{
     font-family: arial, times new roman;
     margin: 5px 0px; 
 }
-.centering{
-    margin: 5px 10px;
+.detail_content td {
+    text-align:center;
+}
+.even, thead{
+    background-color: #DDEDF6;
+}
+.odd{
+    background-color: white;
 }
 .col1{
     width: 66px;
@@ -131,6 +138,7 @@ html{
 }
 .message_list{
     border-bottom: 1px solid #C0C0C0;
+    margin-bottom: 10px;
 }
 /*avatar badge*/
 .badge{

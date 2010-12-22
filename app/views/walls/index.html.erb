@@ -16,7 +16,7 @@
         <% end %>
       </div>
       <div class="app_clear">&nbsp;</div>
-      <div id="message_list" class="message_list">
+      <div id="message_list">
         <% @wall_messages.each do |wm| %>
           <%= render :partial => "message_list", :locals => { :message => wm } %>
         <% end %>

@@ -1,4 +1,4 @@
-<div>
+<div class="message_list">
   <div class="avatar_container float_left">
     <img src="<%= get_image('candidate_profile_id' => message['candidate_profile_id']) %>" alt="avatar" class="avatar"/>
     <img src="/images/badge.png" alt="avatar" class="badge"/>
@@ -38,6 +38,16 @@
       <div class="app_clear"></div>
     </div>
     <div class="firstEntry">&nbsp;</div>
+    <% unless  message["likes"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id]) %>
+    <div class="wallContent like">
+    </div>
+    <% end %>
+    <% unless  message["favorites"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id]) %>
+    <div class="wallContent star">
+    </div>
+    <% end %>
+    <div class="wallContent comment">
+    </div>
     <div id="comment_list_<%= message['id'].to_s %>">
       <% message["comments"].each do |comment| %>
         <%= render :partial => "comment_list", :locals => { :comment => comment } %>
