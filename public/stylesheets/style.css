@@ -1,6 +1,6 @@
 html{
     font-family: arial !important;
-    font-size: 10px !important;
+    font-size: 12px !important;
 }
 .a_href{
     color: #5599BB;
@@ -208,8 +208,8 @@ html{
 /*info*/
 .newavatar img {
     display: block;
-    height: 128px !important;
-    width: 128px !important;
+    height: 128px ;
+    width: 128px ;
 }
 .newavatar img.mybadge {
     height: 37px !important;
@@ -219,4 +219,7 @@ html{
 .myinlineLink {
     float: left;
     margin-right: 15px;
+}
+h1{
+    font-size: 16px;
 }
