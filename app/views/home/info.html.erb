@@ -7,6 +7,23 @@
   <div class="commonBox2">
     <div class="pic_header detail_content float_left  margin_padding">
       <div>
+        <div class="newavatar">
+          <img src="<%= get_image('candidate_profile_id' => message['candidate_profile_id']) %>" alt="avatar"/>
+          <img src="/images/badge.png" alt="avatar" class="badge"/>
+        </div>
+        <div class="float_left">
+          <h1>RTBF</h1>
+          <div class="myInlineLink"><a href="#">Following</a>:&nbsp;0</div>
+          <div class="myInlineLink"><a href="#">Followed</a>:&nbsp;0</div>
+          <div class="myInlineLink"><a href="#">Favorites</a>:&nbsp;0</div>
+          <div class="myInlineLink"><a href="#">Messages</a>:&nbsp;0</div>
+          <br/>
+          Location : -<br/>
+          Network : - <br/>
+          Public URl : <a href="#">http://localhost:3000/rtbf</a>
+        </div>
+      </div>
+      <div>
         <div class="content_header"><b>Basic Info</b></div>
         <div class="content_textarea"><%= @info["basic_info"] %></div>
       </div>

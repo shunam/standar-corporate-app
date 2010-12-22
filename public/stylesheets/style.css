@@ -205,3 +205,18 @@ html{
     padding: 5px;
     text-align: center;
 }
+/*info*/
+.newavatar img {
+    display: block;
+    height: 128px !important;
+    width: 128px !important;
+}
+.newavatar img.mybadge {
+    height: 37px !important;
+    margin-top: 5px;
+    width: 128px !important;
+}
+.myinlineLink {
+    float: left;
+    margin-right: 15px;
+}
