@@ -89,13 +89,13 @@ html{
     background-color: white;
 }
 .col1{
-    width: 66px;
+    width: 0px;
 }
 .col2{
-    width: 100px;
+    width: 503px;
 }
 .col3{
-    width: 83px;
+    width: 453px;
 }
 .avatar_container_comment{
     width: 80px;
