@@ -157,14 +157,14 @@ html{
 .time{
     font-size: 10px;
 }
-.wallContent.like {
-    background: url("/images/like.png") no-repeat scroll 5px 50% #DDEDF6;
-    padding: 5px 10px 5px 25px;
-}
 .wallContent {
     background: none repeat scroll 0 0 #DDEDF6;
     margin-bottom: 3px;
     padding: 5px;
+}
+.wallContent.like {
+    background: url("/images/like.png") no-repeat scroll 5px 50% #DDEDF6;
+    padding: 5px 10px 5px 25px;
 }
 .wallContent.star {
     background: url("/images/star.png") no-repeat scroll 5px 50% #DDEDF6;
@@ -184,7 +184,7 @@ html{
     padding: 5px 10px;
     width: 163px;
 }
-#tabsnav .selected{
+#tabsnav .selected a{
     background: url("/images/tabs.png") repeat-x scroll 0 0 #5599BB;
     color: #FFFFFF;
 }

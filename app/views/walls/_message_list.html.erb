@@ -4,6 +4,9 @@
     <img src="/images/badge.png" alt="avatar" class="badge"/>
   </div>
   <div class="float_left message_container comment_container">
+    <div class="float_right">
+      <a href="#"><img src="/images/star-rating-empty.png"/></a>
+    </div>
     <%= message["message"] %> <br />
     <span class="time">1 hours ago</span>
     <span id="like_<%= message['id'].to_s %>">
@@ -34,7 +37,6 @@
       <% end %>
       <div class="app_clear"></div>
     </div>
-    <div class="app_clear">&nbsp;</div>
     <div class="firstEntry">&nbsp;</div>
     <div id="comment_list_<%= message['id'].to_s %>">
       <% message["comments"].each do |comment| %>
