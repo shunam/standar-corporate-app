@@ -1,6 +1,6 @@
 html{
     font-family: arial !important;
-    font-size: 10px;
+    font-size: 10px !important;
 }
 .a_href{
     color: #5599BB;
@@ -79,7 +79,7 @@ html{
     font-family: arial, times new roman;
     margin: 5px 0px; 
 }
-.detail_content td {
+.detail_content td, th {
     text-align:center;
 }
 .even, thead{
