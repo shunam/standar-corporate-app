@@ -7,31 +7,15 @@
   <div class="commonBox2">
     <div class="pic_header detail_content float_left  margin_padding">
       <div>
-        <div class="newavatar">
-          <img src="" alt="avatar"/>
-          <img src="/images/badge.png" alt="avatar" class="mybadge"/>
-        </div>
-        <div class="float_left">
-          <h1>RTBF</h1>
-          <div class="myinlineLink"><a href="#">Following</a>:&nbsp;0</div>
-          <div class="myinlineLink"><a href="#">Followed</a>:&nbsp;0</div>
-          <div class="myinlineLink"><a href="#">Favorites</a>:&nbsp;0</div>
-          <div class="myinlineLink"><a href="#">Messages</a>:&nbsp;0</div>
-          <br/>
-          Location : -<br/>
-          Network : - <br/>
-          Public URl : <a href="#">http://localhost:3000/rtbf</a>
-        </div>
-        <div class="app_clear">&nbsp;</div>
-      </div>
-      <div>
         <div class="content_header"><b>Basic Info</b></div>
         <div class="content_textarea"><%= @info["basic_info"] %></div>
+        <div class="app_clear">&nbsp;</div>
       </div>
       <div class="app_clear">&nbsp;</div>
       <div>
         <div class="content_header"><b>Detailed Info</b></div>
         <div class="content_textarea"><%= @info["detailed_info"] %></div>
+        <div class="app_clear">&nbsp;</div>
       </div>
       <div class="app_clear">&nbsp;</div>
       <div>
@@ -41,6 +25,7 @@
             <%= link_to file.filename, send_file_path(file)  %> <br />
           <% end %>
         </div>
+        <div class="app_clear">&nbsp;</div>
       </div>
     </div>
     <div class="banner float_left  margin_padding">

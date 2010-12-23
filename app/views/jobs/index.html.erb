@@ -22,10 +22,10 @@
         <tbody>
         <% @jobs.each do |job| %>
           <tr>
-            <td><%= job.date %></td>
-            <td><%= job.job_title %></td>
-            <td><%= job.location %></td>
-            <td><%= button_to_remote "Apply", :url => apply_job_path(job) %></td>
+            <td class="separator"><%= job.date %></td>
+            <td class="separator"><%= job.job_title %></td>
+            <td class="separator"><%= job.location %></td>
+            <td class="separator"><%= button_to_remote "Apply", :url => apply_job_path(job) %></td>
           </tr>
         </tbody>
       <% end %>

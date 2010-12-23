@@ -38,6 +38,9 @@
       <% end %>
       <div class="app_clear"></div>
     </div>
+    <span id="delete">
+      <a href="#">delete</a>
+    </span>
     <div class="firstEntry">&nbsp;</div>
     <% unless  message["likes"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id]) %>
     <div class="wallContent like">

@@ -79,7 +79,7 @@ html{
     font-family: arial, times new roman;
     margin: 5px 0px; 
 }
-.detail_content, td, th {
+.detail_content td, .detail_content th {
     text-align:center;
 }
 th{
