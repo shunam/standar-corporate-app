@@ -1,6 +1,6 @@
 <div class="margin_padding message_list">
   <div>
-  <div class="avatar_container float_left">
+  <div class="main_avatar_container float_left">
     <img src="<%= get_image('candidate_profile_id' => message['candidate_profile_id']) %>" alt="avatar" class="avatar"/>
     <img src="/images/badge.png" alt="avatar" class="badge"/>
   </div>
@@ -27,10 +27,10 @@
     </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_favorite_'+message["id"].to_s %> |
 
       <%= link_to "Comment", "#", :onclick => "jQuery('#comment_#{message["id"].to_s}').toggle()", :class => "a_href" %> | 
-    <span id="delete" class="a_href">
-      <a href="#">delete</a>
+    <span id="delete">
+      <a href="#"  class="a_href">delete</a>
     </span>
-    <div id="comment_<%= message['id'].to_s %>" style="display: none" class="wallContent comment">
+    <div id="comment_<%= message['id'].to_s %>" style="display: none">
       <% form_remote_tag :url => comment_message_path(message["id"]), :method => :post,
         :loading => "$('spinner_share_#{message["id"]}').show(); $('button_share_#{message["id"]}').hide()",
         :complete => "$('spinner_share_#{message["id"]}').hide(); $('button_share_#{message["id"]}').show()" do %>
@@ -58,7 +58,9 @@
         <% end %>
       </div>
     <% end %>
-    
+    <div class="wallContent comment">
+      viw all comment
+    </div>
     <div id="comment_list_<%= message['id'].to_s %>">
       <% message["comments"].each do |comment| %>
         <%= render :partial => "comment_list", :locals => { :comment => comment } %>

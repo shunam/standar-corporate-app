@@ -120,9 +120,9 @@ th{
     width: 50px;
     height: 36px;
 }
-.avatar_container{
-    width: 60px;
-    height: 79px;
+.main_avatar_container{
+    width: 50px;
+    height: 67px;
     margin-right: 10px;
 }
 .avatar{
@@ -166,7 +166,9 @@ th{
 }
 /*avatar badge*/
 .badge{
-    width: 60px;
+    width: 50px;
+    height: 14px;
+    padding-top:3px;
 }
 .thumb{
     height: 14px;
