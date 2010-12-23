@@ -8,19 +8,19 @@
     <div class="pic_header detail_content float_left  margin_padding">
       <div>
         <div class="content_header"><b>Basic Info</b></div>
-        <div class="content_textarea"><%= @info["basic_info"] %></div>
+        <div class="content_textarea_info"><%= @info["basic_info"] %></div>
         <div class="app_clear">&nbsp;</div>
       </div>
       <div class="app_clear">&nbsp;</div>
       <div>
         <div class="content_header"><b>Detailed Info</b></div>
-        <div class="content_textarea"><%= @info["detailed_info"] %></div>
+        <div class="content_textarea_info"><%= @info["detailed_info"] %></div>
         <div class="app_clear">&nbsp;</div>
       </div>
       <div class="app_clear">&nbsp;</div>
       <div>
         <div class="content_header"><b>Files to Download</b></div>
-        <div>
+        <div class="content_textarea_info">
           <% @files.each do |file| %>
             <%= link_to file.filename, send_file_path(file)  %> <br />
           <% end %>

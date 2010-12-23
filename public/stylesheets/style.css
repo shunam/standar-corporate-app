@@ -51,12 +51,20 @@ html{
     padding: 5px;
 }
 .content_textarea{
-    border: 1px solid;
     left: 1px;
     position: relative;
     top: -1px;
     width: 733px;
     border: 2px solid #EEEEEE;
+}
+.content_textarea_info{
+    left: 1px;
+    position: relative;
+    top: -1px;
+    width: 733px;
+}
+.info_href{
+    color: #DDEDF6;
 }
 .textarea_job{
     width: 390px;
@@ -73,6 +81,9 @@ html{
 }
 .separator{
     border: 1px solid black;
+}
+.separator_bottom{
+    border-bottom: 1px solid black;
 }
 .p_jobs{
     font-size: 10pt;
