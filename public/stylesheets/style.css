@@ -94,6 +94,10 @@ html{
 .detail_content td, .detail_content th {
     text-align:center;
 }
+.head_bg{
+    background: url("/images/tabs.png") repeat-x scroll 0 0 #5599BB;
+    color: #FFFFFF;
+}
 th{
     padding: 5px;
 }
@@ -113,8 +117,8 @@ th{
     width: 453px;
 }
 .avatar_container_comment{
-    width: 80px;
-    height: 60px;
+    width: 50px;
+    height: 36px;
 }
 .avatar_container{
     width: 60px;
@@ -122,8 +126,8 @@ th{
     margin-right: 10px;
 }
 .avatar{
-    width: 60px;
-    height: 60px;
+    width: 36px;
+    height: 36px;
 }
 .newavatar{
     float: left;
@@ -165,9 +169,9 @@ th{
     width: 60px;
 }
 .thumb{
-    height: 20px;
-    width: 20px;
-    float: right;
+    height: 14px;
+    width: 14px;
+    float: left;
 }
 .wallBadge {
     float: left;

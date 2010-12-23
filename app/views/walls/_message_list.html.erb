@@ -9,7 +9,7 @@
       <a href="#"><img src="/images/star-rating-empty.png"/></a>
     </div>
     <%= message["message"] %> <br />
-    <span class="time">1 hours ago</span>
+    <span class="time" style="color: grey;">1 hours ago</span>
     <span id="like_<%= message['id'].to_s %>">
       <%= unless  message["likes"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
         render :partial => "link_like_unlike", :locals => { :message_id => message["id"].to_s, :is_like => false }
@@ -26,7 +26,10 @@
       end %>
     </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_favorite_'+message["id"].to_s %> |
 
-      <%= link_to "Comment", "#", :onclick => "jQuery('#comment_#{message["id"].to_s}').toggle()", :class => "a_href" %>
+      <%= link_to "Comment", "#", :onclick => "jQuery('#comment_#{message["id"].to_s}').toggle()", :class => "a_href" %> | 
+    <span id="delete" class="a_href">
+      <a href="#">delete</a>
+    </span>
     <div id="comment_<%= message['id'].to_s %>" style="display: none" class="wallContent comment">
       <% form_remote_tag :url => comment_message_path(message["id"]), :method => :post,
         :loading => "$('spinner_share_#{message["id"]}').show(); $('button_share_#{message["id"]}').hide()",
@@ -37,10 +40,8 @@
         <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_share_'+message["id"].to_s %>
       <% end %>
       <div class="app_clear"></div>
-    </div> | 
-    <span id="delete">
-      <a href="#">delete</a>
-    </span>
+    </div>
+
     <div class="firstEntry">&nbsp;</div>
     <% unless  message["likes"].blank? %>
       <div class="wallContent like">
