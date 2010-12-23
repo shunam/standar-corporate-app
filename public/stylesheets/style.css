@@ -79,8 +79,11 @@ html{
     font-family: arial, times new roman;
     margin: 5px 0px; 
 }
-.detail_content td, th {
+.detail_content, td, th {
     text-align:center;
+}
+th{
+    padding: 5px;
 }
 .even, thead{
     background-color: #DDEDF6;
@@ -109,6 +112,12 @@ html{
 .avatar{
     width: 60px;
     height: 60px;
+}
+.newavatar{
+    float: left;
+    height: 170px;
+    margin-right: 10px;
+    width: 128px;
 }
 .message_container{
     height: auto;
