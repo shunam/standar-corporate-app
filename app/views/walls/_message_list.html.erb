@@ -27,7 +27,7 @@
     </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_favorite_'+message["id"].to_s %> |
 
       <%= link_to "Comment", "#", :onclick => "jQuery('#comment_#{message["id"].to_s}').toggle()", :class => "a_href" %>
-    <div id="comment_<%= message['id'].to_s %>" style="display: none" >
+    <div id="comment_<%= message['id'].to_s %>" style="display: none" class="wallContent comment">
       <% form_remote_tag :url => comment_message_path(message["id"]), :method => :post,
         :loading => "$('spinner_share_#{message["id"]}').show(); $('button_share_#{message["id"]}').hide()",
         :complete => "$('spinner_share_#{message["id"]}').hide(); $('button_share_#{message["id"]}').show()" do %>
@@ -42,16 +42,22 @@
       <a href="#">delete</a>
     </span>
     <div class="firstEntry">&nbsp;</div>
-    <% unless  message["likes"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id]) %>
-    <div class="wallContent like">
-    </div>
+    <% unless  message["likes"].blank? %>
+      <div class="wallContent like">
+        <% message["likes"].each do |x| %>
+          <%= x["user_id"].to_s == session[:fellownation_user_id] ? "You" : x["name"] %>
+        <% end %>
+      </div>
     <% end %>
-    <% unless  message["favorites"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id]) %>
-    <div class="wallContent star">
-    </div>
+
+    <% unless  message["favorites"].blank? %>
+      <div class="wallContent star">
+        <% message["favorites"].each do |x| %>
+          <%= x["user_id"].to_s == session[:fellownation_user_id] ? "You" : x["name"] %>
+        <% end %>
+      </div>
     <% end %>
-    <div class="wallContent comment">
-    </div>
+    
     <div id="comment_list_<%= message['id'].to_s %>">
       <% message["comments"].each do |comment| %>
         <%= render :partial => "comment_list", :locals => { :comment => comment } %>

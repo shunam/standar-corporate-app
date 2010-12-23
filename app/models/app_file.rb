@@ -1,6 +1,8 @@
 class AppFile < ActiveRecord::Base
   has_attachment  :storage => :db_file,
-                  :max_size => 4.megabytes
+                  :max_size => 4.megabytes,
+                  :processor => "MiniMagick"
+
 
   validates_as_attachment
 
