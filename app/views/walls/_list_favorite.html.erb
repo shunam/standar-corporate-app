@@ -1,0 +1,5 @@
+<div class="wallContent star">
+  <% favorites.each do |x| %>
+    <%= x["user_id"].to_s == session[:fellownation_user_id] ? "You" : x["name"] %>
+  <% end %>
+</div>

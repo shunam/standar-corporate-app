@@ -1,3 +1,9 @@
+<script>
+  jQuery(document).ready(function() {
+  jQuery("span.wallTime").timeago();
+});
+</script>
+
 <div class="margin_padding message_list">
   <div>
   <div class="main_avatar_container float_left">
@@ -9,7 +15,7 @@
       <a href="#"><img src="/images/star-rating-empty.png"/></a>
     </div>
     <%= message["message"] %> <br />
-    <span class="time" style="color: grey;">1 hours ago</span>
+    <%= timeago(message["created_at"].to_time) %>
     <span id="like_<%= message['id'].to_s %>">
       <%= unless  message["likes"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
         render :partial => "link_like_unlike", :locals => { :message_id => message["id"].to_s, :is_like => false }
@@ -44,19 +50,11 @@
 
     <div class="firstEntry">&nbsp;</div>
     <% unless  message["likes"].blank? %>
-      <div class="wallContent like">
-        <% message["likes"].each do |x| %>
-          <%= x["user_id"].to_s == session[:fellownation_user_id] ? "You" : x["name"] %>
-        <% end %>
-      </div>
+      <%= render :partial => "list_like.html", :locals => { :likes => message["likes"] } %>
     <% end %>
 
     <% unless  message["favorites"].blank? %>
-      <div class="wallContent star">
-        <% message["favorites"].each do |x| %>
-          <%= x["user_id"].to_s == session[:fellownation_user_id] ? "You" : x["name"] %>
-        <% end %>
-      </div>
+      <%= render :partial => "list_favorite.html", :locals => { :favorites => message["favorites"] } %>
     <% end %>
     <div class="wallContent comment">
       viw all comment
