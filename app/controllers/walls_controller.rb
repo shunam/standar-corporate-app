@@ -98,6 +98,18 @@ class WallsController < ApplicationController
     end
   end
 
+  def show_all_comments
+    response = @access_token.get("/API/show_all_comments?message_id=#{params[:message_id]}")
+    comments = ActiveSupport::JSON.decode(response.body)["results"]
+    render :update do |page|
+      if Net::HTTPSuccess
+        page.replace_html "comment_list_#{params[:message_id].to_s}", :partial => "comment_list", :locals => { :comments => comments }
+      else
+        page.alert "Could you try it later ? Something went wrong."
+      end
+    end
+  end
+
   def delete_message
     response = @access_token.post('/API/delete_message', "message_id=#{params[:message_id]}")
     result = ActiveSupport::JSON.decode(response.body)["results"]

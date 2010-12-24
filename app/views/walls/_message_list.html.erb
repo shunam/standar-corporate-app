@@ -36,9 +36,9 @@
         | <span id="delete">
 
           <%= link_to_remote 'Delete', { :url => delete_message_path(message["id"]), :confirm => "Are you sure?", :method => :delete,
-    :loading => "$('spinner_delete_#{message["id"]}').show(); $('link_delete_#{message["id"]}').hide()",
-    :complete => "$('spinner_delete_#{message["id"]}').hide(); $('link_delete_#{message["id"]}').show()" }, :id => 'link_delete_'+message["id"].to_s, :class => "a_href" %>
-    <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_delete_'+message["id"].to_s %>
+            :loading => "$('spinner_delete_#{message["id"]}').show(); $('link_delete_#{message["id"]}').hide()",
+            :complete => "$('spinner_delete_#{message["id"]}').hide(); $('link_delete_#{message["id"]}').show()" }, :id => 'link_delete_'+message["id"].to_s, :class => "a_href" %>
+          <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_delete_'+message["id"].to_s %>
         </span>
       <% end %>
       <div id="comment_<%= message['id'].to_s %>" style="display: none">
@@ -53,21 +53,26 @@
         <div class="app_clear"></div>
       </div>
 
-      <div class="firstEntry">&nbsp;</div>
-      <div id="list_like_<%= message["id"] %>">
+        <div id="first_entry_<%= message["id"] %>">
+      <%=  '<div class="firstEntry">&nbsp;</div>' if !message["likes"].blank? || !message["favorites"].blank? || !message["comments"].blank? %>
+        </div>
+        <div id="list_like_<%= message["id"] %>">
         <%= render :partial => "list_like.html", :locals => { :likes => message["likes"]} %>
       </div>
       <div id="list_favorite_<%= message["id"] %>">
         <%= render :partial => "list_favorite.html", :locals => { :favorites => message["favorites"] } %>
       </div>
-      <div class="wallContent comment">
-        viw all comment
-      </div>
-      <div id="comment_list_<%= message['id'].to_s %>">
-        <% message["comments"].each do |comment| %>
-          <%= render :partial => "comment_list", :locals => { :comment => comment } %>
-        <% end %>
-      </div>
+      <% unless message["comments"].blank? %>
+        <div class="wallContent comment">
+          <%= link_to_remote 'View all comments', { :url => show_all_comments_path(message["id"]), :method => :get,
+            :loading => "$('spinner_comment_#{message["id"]}').show(); $('link_comment_#{message["id"]}').hide()",
+            :complete => "$('spinner_comment_#{message["id"]}').hide(); $('link_comment_#{message["id"]}').show()" }, :id => 'link_comment_'+message["id"].to_s, :class => "a_href" %>
+          <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_comment_'+message["id"].to_s %>
+        </div>
+        <div id="comment_list_<%= message['id'].to_s %>">
+          <%= render :partial => "comment_list", :locals => { :comments => [message["comments"].last] } %>
+        </div>
+      <% end %>
 <%#= will_paginate @messages, :renderer => PaginationListLinkRenderer, :container => true %>
     </div>
   </div>

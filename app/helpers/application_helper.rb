@@ -2,8 +2,11 @@
 module ApplicationHelper
 
   def get_image(params = {})
-    oauth = @access_token.post('/API/user_info', "candidate_profile_id=#{params["candidate_profile_id"]}").body unless params["candidate_profile_id"].blank?
-    oauth = @access_token.post('/API/user_info', "user_id=#{params["user_id"]}").body unless params["user_id"].blank?    
+    unless params["candidate_profile_id"].blank?
+      oauth = @access_token.post('/API/user_info', "candidate_profile_id=#{params["candidate_profile_id"]}").body
+    else
+      oauth = @access_token.post('/API/user_info', "user_id=#{params["user_id"]}").body unless params["user_id"].blank?
+    end
     ActiveSupport::JSON.decode(oauth)["results"]["photo"]
   end
 
