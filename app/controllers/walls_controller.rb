@@ -39,7 +39,6 @@ class WallsController < ApplicationController
     response = @access_token.post('/API/unlike_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
     result = ActiveSupport::JSON.decode(response.body)["results"]
     response = @access_token.get("/API/list_like_messages?message_id=#{params[:message_id]}")
-    
     likes = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess && result == "success"
@@ -54,9 +53,12 @@ class WallsController < ApplicationController
   def favorite_message
     response = @access_token.post('/API/favorite_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
     result = ActiveSupport::JSON.decode(response.body)["results"]
+    response = @access_token.get("/API/list_favorite_messages?message_id=#{params[:message_id]}")
+    favorites = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess && result == "success"
         page.replace_html "favorite_#{params[:message_id]}", :partial => "link_favorite_unfavorite", :locals => { :message_id => params[:message_id], :is_favorite => true }
+        page.replace_html "list_favorite_#{params[:message_id]}", :partial => "list_favorite", :locals => { :favorites => favorites }
       else
         page.alert "Could you try it later ? Something went wrong."
       end
@@ -66,9 +68,12 @@ class WallsController < ApplicationController
   def unfavorite_message
     response = @access_token.post('/API/unfavorite_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
     result = ActiveSupport::JSON.decode(response.body)["results"]
+    response = @access_token.get("/API/list_favorite_messages?message_id=#{params[:message_id]}")
+    favorites = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess && result == "success"
         page.replace_html "favorite_#{params[:message_id]}", :partial => "link_favorite_unfavorite", :locals => { :message_id => params[:message_id], :is_favorite => false }
+        page.replace_html "list_favorite_#{params[:message_id]}", :partial => "list_favorite", :locals => { :favorites => favorites }
       else
         page.alert "Could you try it later ? Something went wrong."
       end

@@ -1,5 +1,10 @@
-<div class="wallContent star">
-  <% favorites.each do |x| %>
-    <%= x["user_id"].to_s == session[:fellownation_user_id] ? "You" : x["name"] %>
-  <% end %>
-</div>
+<% if !favorites.blank? && favorites != "no result"
+  names = []
+  favorites.each do |x|
+    names << (x["user_id"].to_s == session[:fellownation_user_id] ? "You" : x["name"])
+  end
+%>
+  <div class="wallContent star">
+    <%= names.to_sentence  %>
+  </div>
+<% end %>

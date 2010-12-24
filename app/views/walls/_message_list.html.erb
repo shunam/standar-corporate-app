@@ -52,9 +52,9 @@
     <div id="list_like_<%= message["id"] %>">
         <%= render :partial => "list_like.html", :locals => { :likes => message["likes"]} %>
     </div>
-    <% unless  message["favorites"].blank? %>
+    <div id="list_favorite_<%= message["id"] %>">
       <%= render :partial => "list_favorite.html", :locals => { :favorites => message["favorites"] } %>
-    <% end %>
+    </div>
     <div class="wallContent comment">
       viw all comment
     </div>
