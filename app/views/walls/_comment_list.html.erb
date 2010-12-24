@@ -1,5 +1,5 @@
 <% comments.each do |comment| %>
-  <div class="wallContent">
+  <div id="comment_<%= comment["id"] %>" class="wallContent">
     <div class="avatar_container_comment float_left">
       <img src="<%= get_image(comment) %>" alt="avatar" class="avatar float_left"/>
       <img src="/images/employee.png" class="thumb"/>
@@ -8,6 +8,14 @@
       <%= comment["comment"] %><br/>
       <span class="time"style="color: grey;">1 hours ago</span>
     </div>
+    <% if comment['user_id'].to_s == session[:fellownation_user_id] %>
+      <span id="delete">
+        <%= link_to_remote 'Delete', { :url => delete_comment_path(comment["id"]), :confirm => "Are you sure?", :method => :delete,
+          :loading => "$('spinner_delete_#{comment["id"]}').show(); $('link_delete_#{comment["id"]}').hide()",
+          :complete => "$('spinner_delete_#{comment["id"]}').hide(); $('link_delete_#{comment["id"]}').show()" }, :id => 'link_delete_'+comment["id"].to_s, :class => "a_href" %>
+        <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_delete_'+comment["id"].to_s %>
+      </span>
+    <% end %>
     <div class="app_clear"></div>
   </div>
 <% end %>

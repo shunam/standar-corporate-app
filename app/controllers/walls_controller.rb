@@ -122,4 +122,16 @@ class WallsController < ApplicationController
     end
   end
 
+  def delete_comment
+    response = @access_token.post('/API/delete_comment', "comment_id=#{params[:comment_id]}")
+    result = ActiveSupport::JSON.decode(response.body)["results"]
+    render :update do |page|
+      if Net::HTTPSuccess && result == "success"
+        page.replace "comment_#{params[:comment_id].to_s}", ""
+      else
+        page.alert "Could you try it later ? Something went wrong."
+      end
+    end
+  end
+
 end
