@@ -22,9 +22,13 @@ class WallsController < ApplicationController
   def like_message
     response = @access_token.post('/API/like_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
     result = ActiveSupport::JSON.decode(response.body)["results"]
+    response = @access_token.get("/API/list_like_messages?message_id=#{params[:message_id]}")
+    likes = ActiveSupport::JSON.decode(response.body)["results"]
+    
     render :update do |page|
       if Net::HTTPSuccess && result == "success"
         page.replace_html "like_#{params[:message_id]}", :partial => "link_like_unlike", :locals => { :message_id => params[:message_id], :is_like => true }
+        page.replace_html "list_like_#{params[:message_id]}", :partial => "list_like", :locals => { :likes => likes }
       else
         page.alert "Could you try it later ? Something went wrong."
       end
@@ -34,9 +38,13 @@ class WallsController < ApplicationController
   def unlike_message
     response = @access_token.post('/API/unlike_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
     result = ActiveSupport::JSON.decode(response.body)["results"]
+    response = @access_token.get("/API/list_like_messages?message_id=#{params[:message_id]}")
+    
+    likes = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess && result == "success"
         page.replace_html "like_#{params[:message_id]}", :partial => "link_like_unlike", :locals => { :message_id => params[:message_id], :is_like => false }
+        page.replace_html "list_like_#{params[:message_id]}", :partial => "list_like", :locals => { :likes => likes }
       else
         page.alert "Could you try it later ? Something went wrong."
       end

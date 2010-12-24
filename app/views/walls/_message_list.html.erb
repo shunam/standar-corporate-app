@@ -49,10 +49,9 @@
     </div>
 
     <div class="firstEntry">&nbsp;</div>
-    <% unless  message["likes"].blank? %>
-      <%= render :partial => "list_like.html", :locals => { :likes => message["likes"] } %>
-    <% end %>
-
+    <div id="list_like_<%= message["id"] %>">
+        <%= render :partial => "list_like.html", :locals => { :likes => message["likes"]} %>
+    </div>
     <% unless  message["favorites"].blank? %>
       <%= render :partial => "list_favorite.html", :locals => { :favorites => message["favorites"] } %>
     <% end %>
