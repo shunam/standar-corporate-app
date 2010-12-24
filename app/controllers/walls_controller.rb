@@ -98,4 +98,16 @@ class WallsController < ApplicationController
     end
   end
 
+  def delete_message
+    response = @access_token.post('/API/delete_message', "message_id=#{params[:message_id]}")
+    result = ActiveSupport::JSON.decode(response.body)["results"]
+    render :update do |page|
+      if Net::HTTPSuccess && result == "success"
+        page.replace "message_list_#{params[:message_id].to_s}", ""
+      else
+        page.alert "Could you try it later ? Something went wrong."
+      end
+    end
+  end
+
 end
