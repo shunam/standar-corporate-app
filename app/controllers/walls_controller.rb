@@ -86,9 +86,11 @@ class WallsController < ApplicationController
         response = @access_token.post('/API/comment_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}&comment=#{params[:comment]}")
         result = ActiveSupport::JSON.decode(response.body)["results"]
         comment = {"comment"=> params[:comment], "user_id" => session[:fellownation_user_id] }
+        response = @access_token.get("/API/show_all_comments?message_id=#{params[:message_id]}")
+        comments = ActiveSupport::JSON.decode(response.body)["results"]
 
         if Net::HTTPSuccess && result == "success"
-          page.insert_html :top, "comment_list_#{params[:message_id].to_s}", :partial => "comment_list", :locals => { :comment => comment }
+          page.insert_html :top, "comment_list_#{params[:message_id].to_s}", :partial => "comment_list", :locals => { :comments => [comments.last] }
         else
           page.alert "Could you try it later ? Something went wrong."
         end
