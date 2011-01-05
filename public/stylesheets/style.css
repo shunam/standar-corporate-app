@@ -250,3 +250,10 @@ th{
 h1{
     font-size: 16px;
 }
+.more_app{
+    background: none repeat scroll 0 0 #DDEDF6;
+    height: 25px;
+    line-height: 24px;
+    margin: 5px;
+    padding-left: 15px;
+}
