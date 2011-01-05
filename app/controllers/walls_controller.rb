@@ -7,6 +7,25 @@ class WallsController < ApplicationController
     @wall_messages = result unless result == 'no result'
   end
 
+  def show_more
+    response = @access_token.post('/API/wall_messages_for_app', "app_key=#{FKEY}&page=#{params[:page]}")
+    result = ActiveSupport::JSON.decode(response.body)["results"]
+    render :update do |page|
+      if Net::HTTPSuccess
+        unless result == 'no result'
+          result.each do |wm|
+            page.insert_html :bottom, :message_list, :partial => "message_list", :locals => { :message => wm }
+          end
+          page.replace_html :show_more, (link_to_remote "More Applications", :url => show_more_path((params[:page].to_i+1)))
+        else
+          page.replace_html :show_more, ""
+        end
+      else
+        page.alert "Could you try it later ? Something went wrong."
+      end
+    end
+  end
+
   def post_message
     response = @access_token.post('/API/wall_message_from_app', "user_id=#{session[:fellownation_user_id]}&app_key=#{FKEY}&message=#{params[:message]}")
     result = ActiveSupport::JSON.decode(response.body)["results"]
