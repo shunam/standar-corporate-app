@@ -19,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   map.delete_message '/message/:message_id/delete', :controller => "walls", :action => "delete_message", :method => :delete
   map.show_all_comments '/message/:message_id/show_all_comments', :controller => "walls", :action => "show_all_comments", :method => :get
   map.delete_comment '/message/comment/:comment_id/delete', :controller => "walls", :action => "delete_comment", :method => :delete
+  map.show_more '/message/show_more/page/:page', :controller => "walls", :action => "show_more", :method => :get
 
   map.resources :jobs, :member => { :apply => :post}
   map.resources :walls
