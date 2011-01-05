@@ -11,7 +11,13 @@
     </div>
     <div class="float_left message_container comment_container">
       <div class="float_right">
-        <a href="#"><img src="/images/star-rating-empty.png"/></a>
+        <span id="favorite_<%= message['id'].to_s %>">
+        <%= unless  message["favorites"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
+          render :partial => "link_favorite_unfavorite", :locals => { :message_id => message["id"].to_s, :is_favorite => false }
+        else
+          render :partial => "link_favorite_unfavorite", :locals => { :message_id => message["id"].to_s, :is_favorite => true }
+        end %>
+      </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_favorite_'+message["id"].to_s %>
       </div>
       <%= message["message"] %> <br />
       <%= timeago(message["created_at"].to_time) %>
@@ -22,14 +28,6 @@
           render :partial => "link_like_unlike", :locals => { :message_id => message["id"].to_s, :is_like => true }
         end %>
       </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_like_'+message["id"].to_s %> |
-
-      <span id="favorite_<%= message['id'].to_s %>">
-        <%= unless  message["favorites"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
-          render :partial => "link_favorite_unfavorite", :locals => { :message_id => message["id"].to_s, :is_favorite => false }
-        else
-          render :partial => "link_favorite_unfavorite", :locals => { :message_id => message["id"].to_s, :is_favorite => true }
-        end %>
-      </span> <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_favorite_'+message["id"].to_s %> |
 
       <%= link_to "Comment", "#", :onclick => "jQuery('#comment_#{message["id"].to_s}').toggle()", :class => "a_href" %>
       <% if message['user_id'].to_s == session[:fellownation_user_id] %>
@@ -69,10 +67,10 @@
             :complete => "$('spinner_comment_#{message["id"]}').hide(); $('link_comment_#{message["id"]}').show()" }, :id => 'link_comment_'+message["id"].to_s, :class => "a_href" %>
           <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_comment_'+message["id"].to_s %>
         </div>
-        <div id="comment_list_<%= message['id'].to_s %>">
-          <%= render :partial => "comment_list", :locals => { :comments => [message["comments"].last] } %>
-        </div>
       <% end %>
+      <div id="comment_list_<%= message['id'].to_s %>">
+        <%= render :partial => "comment_list", :locals => { :comments => [message["comments"].last] } unless message["comments"].blank? %>
+      </div>
 <%#= will_paginate @messages, :renderer => PaginationListLinkRenderer, :container => true %>
     </div>
   </div>
