@@ -17,9 +17,11 @@
       </div>
       <div class="app_clear">&nbsp;</div>
       <div id="message_list">
-        <% @wall_messages.each do |wm| %>
-          <%= render :partial => "message_list", :locals => { :message => wm } %>
-        <% end %>
+        <% unless @wall_messages.blank?
+            @wall_messages.each do |wm| %>
+               <%= render :partial => "message_list", :locals => { :message => wm } %>
+        <%  end
+           end%>
       </div>
       <div id ="show_more">
         <%= link_to_remote "More Applications", :url => show_more_path(2) %>
