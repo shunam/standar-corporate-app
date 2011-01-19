@@ -30,6 +30,10 @@ class WallsController < ApplicationController
     response = @access_token.post('/API/wall_message_from_app', "user_id=#{session[:fellownation_user_id]}&app_key=#{FKEY}&message=#{params[:message]}")
     result = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
+      
+      debugger
+      a=""
+      
       if Net::HTTPSuccess && result != "failed"
         page.insert_html :top, :message_list, :partial => "message_list", :locals => { :message => result }
       else
