@@ -110,7 +110,7 @@ class WallsController < ApplicationController
 
         if Net::HTTPSuccess && result == "success"
           page.insert_html :top, "comment_list_#{params[:message_id].to_s}", :partial => "comment_list", :locals => { :comments => [comments.last] }
-          page << '$("text_field_comment_73").value = ""'
+          page << '$("text_field_comment_'+params[:message_id].to_s+'").value = ""'
         else
           page.alert "Could you try it later ? Something went wrong."
         end
