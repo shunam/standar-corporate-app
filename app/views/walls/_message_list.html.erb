@@ -71,7 +71,6 @@
       <div id="comment_list_<%= message['id'].to_s %>">
         <%= render :partial => "comment_list", :locals => { :comments => [message["comments"].last] } unless message["comments"].blank? %>
       </div>
-<%#= will_paginate @messages, :renderer => PaginationListLinkRenderer, :container => true %>
     </div>
   </div>
   <div class="app_clear"></div>
