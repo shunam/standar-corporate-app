@@ -29,8 +29,8 @@ class WallsController < ApplicationController
   def post_message
     response = @access_token.post('/API/wall_message_from_app', "user_id=#{session[:fellownation_user_id]}&app_key=#{FKEY}&message=#{params[:message]}")
     result = ActiveSupport::JSON.decode(response.body)["results"]
-    render :update do |page|
-      if Net::HTTPSuccess && result == "success"
+    render :update do |page|      
+      if Net::HTTPSuccess && result != "failed"
         page.insert_html :top, :message_list, :partial => "message_list", :locals => { :message => result }
       else
         page.alert "Could you try it later ? Something went wrong."
@@ -110,6 +110,7 @@ class WallsController < ApplicationController
 
         if Net::HTTPSuccess && result == "success"
           page.insert_html :top, "comment_list_#{params[:message_id].to_s}", :partial => "comment_list", :locals => { :comments => [comments.last] }
+          page << '$("text_field_comment_'+params[:message_id].to_s+'").value = ""'
         else
           page.alert "Could you try it later ? Something went wrong."
         end

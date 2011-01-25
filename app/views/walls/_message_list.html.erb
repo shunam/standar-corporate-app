@@ -12,7 +12,7 @@
     <div class="float_left message_container comment_container">
       <div class="float_right">
         <span id="favorite_<%= message['id'].to_s %>">
-        <%= unless  message["favorites"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
+        <%= if message["favorites"].blank? || !message["favorites"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
           render :partial => "link_favorite_unfavorite", :locals => { :message_id => message["id"].to_s, :is_favorite => false }
         else
           render :partial => "link_favorite_unfavorite", :locals => { :message_id => message["id"].to_s, :is_favorite => true }
@@ -22,7 +22,7 @@
       <%= message["message"] %> <br />
       <%= timeago(message["created_at"].to_time) %>
       <span id="like_<%= message['id'].to_s %>">
-        <%= unless  message["likes"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
+        <%= if message["likes"].blank? || !message["likes"].collect{|x| x["user_id"].to_s }.include?(session[:fellownation_user_id])
           render :partial => "link_like_unlike", :locals => { :message_id => message["id"].to_s, :is_like => false }
         else
           render :partial => "link_like_unlike", :locals => { :message_id => message["id"].to_s, :is_like => true }
@@ -43,10 +43,10 @@
         <% form_remote_tag :url => comment_message_path(message["id"]), :method => :post,
           :loading => "$('spinner_share_#{message["id"]}').show(); $('button_share_#{message["id"]}').hide()",
           :complete => "$('spinner_share_#{message["id"]}').hide(); $('button_share_#{message["id"]}').show()" do %>
-          <%= text_area_tag "comment", nil,  :class => "comment_on_comment" %>
+          <%= text_area_tag "comment", nil,  :class => "comment_on_comment", :id => "text_field_comment_#{message['id']}" %>
           <br/>
           <%= submit_tag "Share", :id => "button_share_#{message["id"]}", :class => "float_right sendBtn" %>
-          <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_share_'+message["id"].to_s %>
+          <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_share_'+message["id"].to_s, :class => "float_right" %>
         <% end %>
         <div class="app_clear"></div>
       </div>
@@ -71,7 +71,6 @@
       <div id="comment_list_<%= message['id'].to_s %>">
         <%= render :partial => "comment_list", :locals => { :comments => [message["comments"].last] } unless message["comments"].blank? %>
       </div>
-<%#= will_paginate @messages, :renderer => PaginationListLinkRenderer, :container => true %>
     </div>
   </div>
   <div class="app_clear"></div>
