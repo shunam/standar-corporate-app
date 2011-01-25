@@ -1,5 +1,5 @@
 html{
-    font-family: arial !important;
+   font-family:  "Lucida Grande", "Lucida Sans", "Neutraface 2 Bold Italic", "Neutraface 2 Bold",  "Nimbus Sans L";
     font-size: 12px !important;
 }
 .a_href{
@@ -88,7 +88,7 @@ html{
 }
 .p_jobs{
     font-size: 10pt;
-    font-family: arial, times new roman;
+    font-family:  "Lucida Grande", "Lucida Sans", "Neutraface 2 Bold Italic", "Neutraface 2 Bold",  "Nimbus Sans L";
     margin: 5px 0px; 
 }
 .detail_content td, .detail_content th {
