@@ -1,3 +1,21 @@
+
+    <iframe id="helpframe" src='' height='0' width='0' frameborder='0'></iframe>
+    <script type="text/javascript">
+      jQuery(document).ready(function($){
+        function iframeResizePipe()
+        {
+           // What's the page height?
+           var height = $("#body").height();
+           var width = $("#body").width();
+
+           // Going to 'pipe' the data to the parent through the helpframe..
+           $('#helpframe').attr("src",'<%= IFRAME_HELPER %>?height='+height+'&width='+width+'&cacheb='+Math.random());
+
+        }
+        iframeResizePipe();
+      });
+    </script>
+
 <div id="message_list_<%= message["id"] %>" class="margin_padding message_list">
   <script>
     jQuery(document).ready(function() {
