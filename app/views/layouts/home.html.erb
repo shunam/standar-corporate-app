@@ -20,7 +20,7 @@
            var width = $("#body").width();
 
            // Going to 'pipe' the data to the parent through the helpframe..
-           $('#helpframe').attr("src",'http://dev.localhost.local:3000/iframe_helper.html?height='+height+'&width='+width+'&cacheb='+Math.random());
+           $('#helpframe').attr("src",'<%= IFRAME_HELPER %>?height='+height+'&width='+width+'&cacheb='+Math.random());
 
         }
         iframeResizePipe();
