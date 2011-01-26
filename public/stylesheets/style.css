@@ -1,9 +1,9 @@
 html{
-    font-family: arial !important;
+   font-family:  "Lucida Grande", "Lucida Sans", "Neutraface 2 Bold Italic", "Neutraface 2 Bold",  "Nimbus Sans L";
     font-size: 12px !important;
 }
 .a_href{
-    color: #5599BB;
+    color: #288AB3;
     font-size: 10px;
 }
 .app_clear{
@@ -30,7 +30,7 @@ html{
 .detail_content{
     height: auto;
     overflow: hidden;
-    border: 3px solid #5599BB;
+    border: 3px solid #288AB3;
 }
 .content{
     width: 760px;
@@ -45,7 +45,7 @@ html{
     color: blue;
 }
 .content_header{
-    background: #6699bb;
+    background: #288AB3;
     border: 1px solid;
     color: white;
     padding: 5px;
@@ -88,7 +88,7 @@ html{
 }
 .p_jobs{
     font-size: 10pt;
-    font-family: arial, times new roman;
+    font-family:  "Lucida Grande", "Lucida Sans", "Neutraface 2 Bold Italic", "Neutraface 2 Bold",  "Nimbus Sans L";
     margin: 5px 0px; 
 }
 .detail_content td, .detail_content th {
@@ -224,7 +224,7 @@ th{
 }
 #tabsnav li a {
     background: none repeat scroll 0 0 #DDEDF6;
-    border: 1px solid #70AAC7;
+    border: 1px solid #288AB3;
     color: #000000;
     display: block;
     font-size: 14px;
