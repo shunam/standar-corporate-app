@@ -16,9 +16,14 @@ class WallsController < ApplicationController
           result.each do |wm|
             page.insert_html :bottom, :message_list, :partial => "message_list", :locals => { :message => wm }
           end
-          page.replace_html :show_more, (link_to_remote "More Applications", :url => show_more_path((params[:page].to_i+1)))
+          
+          if result.size == 10
+            page.replace_html :show_more, :partial => "show_more", :locals => {:index => params[:page].next}
+          else
+            page.replace :show_more, ""
+          end
         else
-          page.replace_html :show_more, ""
+          page.replace :show_more, ""
         end
       else
         page.alert "Could you try it later ? Something went wrong."
