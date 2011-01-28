@@ -19,6 +19,9 @@ html{
     margin: 5px;
     padding: 5px;
 }
+.padding_only{
+		padding: 5px;
+}
 .pic_header{
     width: 738px;
     height: 80px;
@@ -54,8 +57,9 @@ html{
     left: 1px;
     position: relative;
     top: -1px;
-    width: 733px;
+    width: 722px;
     border: 2px solid #EEEEEE;
+    padding: 5px;
 }
 .content_textarea_info{
     left: 1px;
@@ -138,7 +142,7 @@ th{
 .message_container{
     height: auto;
     margin-left: 5px;
-    width: 633px;
+    width: 618px;
     padding: 5px;
 }
 .comment_on_comment{
@@ -160,6 +164,7 @@ th{
     font-weight: bold;
     margin-left: 10px;
     padding: 5px;
+    margin-top: 5px;
 }
 .message_list{
     border-bottom: 1px solid #C0C0C0;
@@ -256,4 +261,31 @@ h1{
     line-height: 24px;
     margin: 5px;
     padding-left: 15px;
+}
+.left_tabs{
+		margin-left: 5px;
+}
+.padding-bottom{
+		padding-bottom: 5px;
+}
+.submitBtn2 {
+    padding: 3px 10px;
+    border: 1px solid #94c1d3;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    behavior: url(/js/PIE.htc);
+    background: url(/images/button4.png) 0 0 repeat-x;
+    float: right;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #fff
+}
+.wallContent {
+    background: none repeat scroll 0 0 #DDEDF6;
+    margin-bottom: 3px;
+    padding: 5px;
+}
+.rtbf_height{
+		height: 100px;
 }

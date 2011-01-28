@@ -57,17 +57,6 @@
           <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_delete_'+message["id"].to_s %>
         </span>
       <% end %>
-      <div id="comment_<%= message['id'].to_s %>" style="display: none">
-        <% form_remote_tag :url => comment_message_path(message["id"]), :method => :post,
-          :loading => "$('spinner_share_#{message["id"]}').show(); $('button_share_#{message["id"]}').hide()",
-          :complete => "$('spinner_share_#{message["id"]}').hide(); $('button_share_#{message["id"]}').show()" do %>
-          <%= text_area_tag "comment", nil,  :class => "comment_on_comment", :id => "text_field_comment_#{message['id']}" %>
-          <br/>
-          <%= submit_tag "Share", :id => "button_share_#{message["id"]}", :class => "float_right sendBtn" %>
-          <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_share_'+message["id"].to_s, :class => "float_right" %>
-        <% end %>
-        <div class="app_clear"></div>
-      </div>
 
         <div id="first_entry_<%= message["id"] %>">
       <%=  '<div class="firstEntry">&nbsp;</div>' if !message["likes"].blank? || !message["favorites"].blank? || !message["comments"].blank? %>
@@ -88,6 +77,19 @@
       <% end %>
       <div id="comment_list_<%= message['id'].to_s %>">
         <%= render :partial => "comment_list", :locals => { :comments => [message["comments"].last] } unless message["comments"].blank? %>
+      </div>
+      <div id="comment_<%= message['id'].to_s %>" style="display: none">
+      	<div class="wallContent">
+		      <% form_remote_tag :url => comment_message_path(message["id"]), :method => :post,
+		        :loading => "$('spinner_share_#{message["id"]}').show(); $('button_share_#{message["id"]}').hide()",
+		        :complete => "$('spinner_share_#{message["id"]}').hide(); $('button_share_#{message["id"]}').show()" do %>
+		        <%= text_area_tag "comment", nil,  :class => "comment_on_comment", :id => "text_field_comment_#{message['id']}" %>
+		        <br/>
+		        <%= submit_tag "POST", :id => "button_share_#{message["id"]}", :class => "float_right submitBtn2" %>
+		        <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_share_'+message["id"].to_s, :class => "float_right" %>
+		      <% end %>
+        </div>
+        <div class="app_clear"></div>
       </div>
     </div>
   </div>

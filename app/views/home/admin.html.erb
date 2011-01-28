@@ -31,8 +31,8 @@
           </div>
           <% remote_form_for(:file, :url => save_file_path(:format => "js"), :html => { :method => :post, :multipart => true, :target => 'upload_frame' }) do |f| %>
             Select a file on your computer ( 4MB max ) : <br />
-            <%= f.file_field :uploaded_data %><br />
-            <%= link_to 'Upload', "#my_file", :onclick=>"$(this).up('form').submit(); $('list_files').focus() " %>
+            <%= f.file_field :uploaded_data %>
+            <%= link_to 'Upload', "#my_file", :onclick=>"$(this).up('form').submit(); $('list_files').focus() ", :class=> "a_href" %>
             <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
           <% end %>
         </div>

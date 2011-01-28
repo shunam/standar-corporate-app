@@ -10,7 +10,7 @@
         <% form_remote_tag :url => post_message_path, :method => :post,
               :loading => "$('spinner_share').show(); $('button_share').hide()",
               :complete => "$('spinner_share').hide(); $('button_share').show()" do %>
-          <div><textarea class="content_textarea" name="message"></textarea></div>
+          <div><textarea class="content_textarea rtbf_height" name="message"></textarea></div>
           <%= submit_tag "Share", :class => "float_right sendBtn", :id => "button_share" %>
           <%= image_tag 'spinner.gif', :class => "float_right", :style => "display: none", :id => 'spinner_share' %>
         <% end %>
