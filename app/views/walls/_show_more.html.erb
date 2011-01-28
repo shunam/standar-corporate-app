@@ -1,0 +1,3 @@
+<%= link_to_remote "More Messages", {:url => show_more_path(index), :loading => "$('link_more').hide();$('message_spinner').show();",
+  :complete => "$('link_more').show();$('message_spinner').hide();"}, :id => "link_more" %>
+<%= image_tag "spinner.gif", :style => "display: none;", :id => "message_spinner" %>
