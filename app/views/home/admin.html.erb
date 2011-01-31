@@ -33,7 +33,7 @@
             Select a file on your computer ( 4MB max ) : <br />
             <%= f.file_field :uploaded_data %>
             <%= link_to 'Upload', "#my_file", :onclick=>"$(this).up('form').submit(); $('list_files').focus() ", :class=> "a_href" %>
-            <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
+            <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px; float:right;" src="about:blank"></iframe>
           <% end %>
         </div>
       </div>
