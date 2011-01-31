@@ -146,7 +146,7 @@ th{
     padding: 5px;
 }
 .comment_on_comment{
-    width: 627px;
+    width: 591px;
     padding: 5px;
 }
 .other_user_comment{
@@ -288,4 +288,7 @@ h1{
 }
 .rtbf_height{
 		height: 100px;
+}
+rtbf_margin{
+		margin-left: 15px;
 }
