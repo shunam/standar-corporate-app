@@ -3,9 +3,9 @@ module ApplicationHelper
 
   def get_image(params = {})
     unless params["candidate_profile_id"].blank?
-      oauth = @access_token.post('/API/user_info', "candidate_profile_id=#{params["candidate_profile_id"]}").body
+      oauth = request_webservius('/API/user_info', {:candidate_profile_id => params['candidate_profile_id'] }).body
     else
-      oauth = @access_token.post('/API/user_info', "user_id=#{params["user_id"]}").body unless params["user_id"].blank?
+      oauth = request_webservius('/API/user_info', {:user_id => params["user_id"] }).body unless params["user_id"].blank?
     end
     ActiveSupport::JSON.decode(oauth)["results"]["photo"]
   end

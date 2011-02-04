@@ -1,14 +1,13 @@
 class WallsController < ApplicationController
-  before_filter :prepare_token
 
   def index
-    response = @access_token.post('/API/wall_messages_for_app', "app_key=#{FKEY}")
+    response = request_webservius('/API/wall_messages_for_app', {:app_key= => FKEY })
     result = ActiveSupport::JSON.decode(response.body)["results"]
     @wall_messages = result unless result == 'no result'
   end
 
   def show_more
-    response = @access_token.post('/API/wall_messages_for_app', "app_key=#{FKEY}&page=#{params[:page]}")
+    response = request_webservius('/API/wall_messages_for_app', {:app_key= => FKEY, :page => params[:page] })
     result = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess
@@ -31,8 +30,8 @@ class WallsController < ApplicationController
     end
   end
 
-  def post_message
-    response = @access_token.post('/API/wall_message_from_app', "user_id=#{session[:fellownation_user_id]}&app_key=#{FKEY}&message=#{params[:message]}")
+  def post_message    
+    response = request_webservius('/API/wall_message_from_app', {:user_id => session[:fellownation_user_id], :app_key => FKEY, :message => params[:message] }, :post)
     result = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|      
       if Net::HTTPSuccess && result != "failed"
@@ -44,9 +43,9 @@ class WallsController < ApplicationController
   end
 
   def like_message
-    response = @access_token.post('/API/like_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
+    response = request_webservius('/API/like_message_from_app', {:message_id => params[:message_id], :user_id => session[:fellownation_user_id]})
     result = ActiveSupport::JSON.decode(response.body)["results"]
-    response = @access_token.get("/API/list_like_messages?message_id=#{params[:message_id]}")
+    response = request_webservius('/API/list_like_messages', {:message_id => params[:message_id] })
     likes = ActiveSupport::JSON.decode(response.body)["results"]
     
     render :update do |page|
@@ -60,9 +59,9 @@ class WallsController < ApplicationController
   end
 
   def unlike_message
-    response = @access_token.post('/API/unlike_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
+    response = request_webservius('/API/unlike_message_from_app', {:message_id => params[:message_id], :user_id => session[:fellownation_user_id]})
     result = ActiveSupport::JSON.decode(response.body)["results"]
-    response = @access_token.get("/API/list_like_messages?message_id=#{params[:message_id]}")
+    response = request_webservius('/API/list_like_messages', {:message_id => params[:message_id] })
     likes = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess && result == "success"
@@ -75,9 +74,9 @@ class WallsController < ApplicationController
   end
 
   def favorite_message
-    response = @access_token.post('/API/favorite_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
+    response = request_webservius('/API/favorite_message_from_app', {:message_id => params[:message_id], :user_id => session[:fellownation_user_id]})
     result = ActiveSupport::JSON.decode(response.body)["results"]
-    response = @access_token.get("/API/list_favorite_messages?message_id=#{params[:message_id]}")
+    response = request_webservius('/API/list_favorite_messages', {:message_id => params[:message_id]})
     favorites = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess && result == "success"
@@ -90,9 +89,9 @@ class WallsController < ApplicationController
   end
 
   def unfavorite_message
-    response = @access_token.post('/API/unfavorite_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}")
+    response = request_webservius('/API/unfavorite_message_from_app', {:message_id => params[:message_id], :user_id => session[:fellownation_user_id]})
     result = ActiveSupport::JSON.decode(response.body)["results"]
-    response = @access_token.get("/API/list_favorite_messages?message_id=#{params[:message_id]}")
+    response = request_webservius('/API/list_favorite_messages', {:message_id => params[:message_id]})
     favorites = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess && result == "success"
@@ -107,10 +106,9 @@ class WallsController < ApplicationController
   def comment_message
     render :update do |page|
       unless params[:comment].blank?
-        response = @access_token.post('/API/comment_message_from_app', "message_id=#{params[:message_id]}&user_id=#{session[:fellownation_user_id]}&comment=#{params[:comment]}")
+        response = request_webservius('/API/comment_message_from_app', {:message_id => params[:message_id], :user_id => session[:fellownation_user_id], :comment => params[:comment]})
         result = ActiveSupport::JSON.decode(response.body)["results"]
-        comment = {"comment"=> params[:comment], "user_id" => session[:fellownation_user_id] }
-        response = @access_token.get("/API/show_all_comments?message_id=#{params[:message_id]}")
+        response = request_webservius('/API/show_all_comments', {:message_id => params[:message_id] })
         comments = ActiveSupport::JSON.decode(response.body)["results"]
 
         if Net::HTTPSuccess && result == "success"
@@ -126,7 +124,7 @@ class WallsController < ApplicationController
   end
 
   def show_all_comments
-    response = @access_token.get("/API/show_all_comments?message_id=#{params[:message_id]}")
+    response = request_webservius('/API/show_all_comments', {:message_id => params[:message_id] })
     comments = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess
@@ -138,7 +136,7 @@ class WallsController < ApplicationController
   end
 
   def delete_message
-    response = @access_token.post('/API/delete_message', "message_id=#{params[:message_id]}")
+    response = request_webservius('/API/delete_message', {:message_id => params[:message_id] })
     result = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess && result == "success"
@@ -150,7 +148,7 @@ class WallsController < ApplicationController
   end
 
   def delete_comment
-    response = @access_token.post('/API/delete_comment', "comment_id=#{params[:comment_id]}")
+    response = request_webservius('/API/delete_comment', {:comment_id => params[:comment_id] })
     result = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess && result == "success"

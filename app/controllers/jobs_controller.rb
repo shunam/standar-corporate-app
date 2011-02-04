@@ -24,7 +24,7 @@ class JobsController < ApplicationController
   def apply
     prepare_token
     job_title = Job.find(params[:id]).job_title
-    response = @access_token.post('/API/apply_job', "user_id=#{session[:fellownation_user_id]}&app_key=#{FKEY}&job_title=#{job_title}")
+    response = request_webservius('/API/apply_job', {:user_id => session[:fellownation_user_id], :app_key => FKEY, :job_title => job_title })
     result = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess && result == "success"

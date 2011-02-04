@@ -9,3 +9,5 @@ else
   FSECRET = "stSDN6YIRsryEE4wumWPdUkqxhVJUP2qZmtHbBXW"
   IFRAME_HELPER = "http://apps.fellownation.com/iframe_helper.html"
 end
+WEBSERVIUS_PATH = "http://api.fellownation.com"
+WEBSERVIUS_KEY = "Dbsv8wmfax2J5xzAK7_KZ7qrXIiXWR1j"
