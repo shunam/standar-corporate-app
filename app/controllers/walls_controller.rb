@@ -36,6 +36,7 @@ class WallsController < ApplicationController
     render :update do |page|      
       if Net::HTTPSuccess && result != "failed"
         page.insert_html :top, :message_list, :partial => "message_list", :locals => { :message => result }
+        page << "jQuery('#message_text_area').val('')"
       else
         page.alert "Could you try it later ? Something went wrong."
       end

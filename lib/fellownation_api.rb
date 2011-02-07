@@ -14,7 +14,6 @@ module FellownationApi
       request.set_form_data(values)
       response = http.request(request)
     end
-
     return response
   end
   
