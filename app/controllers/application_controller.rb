@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   include FellownationApi
   before_filter :set_session
+  layout 'home'
 
 
   def set_session
@@ -17,7 +18,6 @@ class ApplicationController < ActionController::Base
   private
 
 #  before_filter :get_authentication, :except => [:access_token]
-#  layout 'home'
 #
 #  # Scrub sensitive parameters from your log
 #  # filter_parameter_logging :password
