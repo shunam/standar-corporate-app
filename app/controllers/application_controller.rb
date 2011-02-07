@@ -4,33 +4,17 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  include FellownationApi
   before_filter :set_session
 
 
   def set_session
-    session[:fellownation_user_id] = params[:fellownation_user_id]
+    unless params[:fellownation_user_id].blank?
+      session[:fellownation_user_id] = params[:fellownation_user_id]
+    end
   end
 
   private
-
-  require "net/http"
-  require "uri"
-
-  def request_webservius(path, values={}, method="")
-    if method.blank?
-      string_values = values.merge({"wsvKey" => WEBSERVIUS_KEY}).collect{|x| x.join("=")}.join("&")
-      uri = URI.parse(WEBSERVIUS_PATH+"#{path}?#{string_values}")
-      response = Net::HTTP.get_response(uri)
-    elsif method == :post
-      uri = URI.parse(WEBSERVIUS_PATH+"#{path}?wsvKey=#{WEBSERVIUS_KEY}")
-      http = Net::HTTP.new(uri.host, uri.port)
-      request = Net::HTTP::Post.new(uri.request_uri)
-      request.set_form_data(values)
-      response = http.request(request)
-    end
-    
-    return response
-  end
 
 #  before_filter :get_authentication, :except => [:access_token]
 #  layout 'home'
