@@ -10,6 +10,12 @@ module ApplicationHelper
     ActiveSupport::JSON.decode(oauth)["results"]["photo"]
   end
 
+  def show_badges
+    response = request_webservius('/API/show_badges', {:user_id => session[:fellownation_user_id] }).body
+    link = ActiveSupport::JSON.decode(response)["results"]["link"]
+    image_tag link, :alt=>"avatar", :class=>"badge"
+  end
+
   def timeago(time, options = {})
     options[:class] ||= "wallTime"
     options[:style].blank? ? (options[:style] = "color: grey") : (options[:style] = options[:style] + ";color: grey")
