@@ -9,9 +9,11 @@ class ApplicationController < ActionController::Base
   layout 'home'
 
 
-  def set_session
-    unless params[:fellownation_user_id].blank?
+  def set_session    
+    if !params[:fellownation_user_id].blank? && params[:fellownation] != session[:fellownation_user_id]
       session[:fellownation_user_id] = params[:fellownation_user_id]
+      response = request_webservius('/API/check_admin', {:user_id => params[:fellownation_user_id], :key => FKEY })
+      session[:is_admin] = ActiveSupport::JSON.decode(response.body)["results"]["is_admin"]
     end
   end
 

@@ -1,13 +1,13 @@
 class WallsController < ApplicationController
 
   def index
-    response = request_webservius('/API/wall_messages_for_app', {:app_key= => FKEY })    
+    response = request_webservius('/API/wall_messages_for_app', {:app_key => FKEY })
     result = ActiveSupport::JSON.decode(response.body)["results"]
     @wall_messages = result unless result == 'no result'
   end
 
   def show_more
-    response = request_webservius('/API/wall_messages_for_app', {:app_key= => FKEY, :page => params[:page] })
+    response = request_webservius('/API/wall_messages_for_app', {:app_key => FKEY, :page => params[:page] })
     result = ActiveSupport::JSON.decode(response.body)["results"]
     render :update do |page|
       if Net::HTTPSuccess
