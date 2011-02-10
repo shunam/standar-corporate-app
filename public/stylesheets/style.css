@@ -1,6 +1,5 @@
 html{
-   font-family:  "Lucida Grande", "Lucida Sans", "Neutraface 2 Bold Italic", "Neutraface 2 Bold",  "Nimbus Sans L";
-    font-size: 12px !important;
+    font: normal 12px Lucida Grande,Lucida sans,Lucida,sans-serif;
 }
 .a_href{
     color: #288AB3;
@@ -60,6 +59,7 @@ html{
     width: 722px;
     border: 2px solid #EEEEEE;
     padding: 5px;
+    font: normal 12px Lucida Grande,Lucida sans,Lucida,sans-serif;
 }
 .content_textarea_info{
     left: 1px;
@@ -73,6 +73,7 @@ html{
 .textarea_job{
     width: 390px;
     border: 2px solid #EEEEEE;
+    font: normal 12px Lucida Grande,Lucida sans,Lucida,sans-serif;
 }
 .admin_job_left{
     width: 100px;
@@ -91,15 +92,15 @@ html{
     padding: 5px;
 }
 .p_jobs{
-    font-size: 10pt;
-    font-family:  "Lucida Grande", "Lucida Sans", "Neutraface 2 Bold Italic", "Neutraface 2 Bold",  "Nimbus Sans L";
+    font: normal 10px Lucida Grande,Lucida sans,Lucida,sans-serif;
     margin: 5px 0px; 
 }
 .detail_content td, .detail_content th {
     text-align:center;
+    font: normal 12px Lucida Grande,Lucida sans,Lucida,sans-serif;
 }
 .head_bg{
-    background: url("/images/tabs.png") repeat-x scroll 0 0 #5599BB;
+    background: #288ab3;
     color: #FFFFFF;
 }
 th{
@@ -148,23 +149,24 @@ th{
 .comment_on_comment{
     width: 591px;
     padding: 5px;
+    font: bold 12px Lucida Grande,Lucida sans,Lucida,sans-serif;
 }
 .other_user_comment{
     height: auto;
     margin-left: 5px;
     padding: 5px;
     width: 520px;
+    font: bold 12px Lucida Grande,Lucida sans,Lucida,sans-serif;
 }
 .sendBtn{
     -moz-border-radius: 5px;
     background: url("/images/button3.png") repeat scroll 0 0 #D9D8D8;
     border: 1px solid #C0C0C0;
     color: #000000;
-    font-size: 12px;
-    font-weight: bold;
     margin-left: 10px;
     padding: 5px;
     margin-top: 5px;
+    font: bold 12px Lucida Grande,Lucida sans,Lucida,sans-serif;
 }
 .message_list{
     border-bottom: 1px solid #C0C0C0;
@@ -194,7 +196,7 @@ th{
     overflow: hidden;
 }
 .time{
-    font-size: 10px;
+    font: normal 10px Lucida Grande,Lucida sans,Lucida,sans-serif;
 }
 .wallContent {
     background: none repeat scroll 0 0 #DDEDF6;
@@ -224,7 +226,7 @@ th{
     width: 163px;
 }
 #tabsnav .selected a{
-    background: url("/images/tabs.png") repeat-x scroll 0 0 #5599BB;
+    background: #288ab3;
     color: #FFFFFF;
 }
 #tabsnav li a {
@@ -244,9 +246,9 @@ th{
     width: 128px ;
 }
 .newavatar img.mybadge {
-    height: 37px !important;
+    height: 30px !important;
     margin-top: 5px;
-    width: 128px !important;
+    width: 130px !important;
 }
 .myinlineLink {
     float: left;
@@ -279,7 +281,8 @@ h1{
     float: right;
     margin-top: 5px;
     font-weight: bold;
-    color: #fff
+    color: #fff;
+    font: normal 12px Lucida Grande,Lucida sans,Lucida,sans-serif;
 }
 .wallContent {
     background: none repeat scroll 0 0 #DDEDF6;
