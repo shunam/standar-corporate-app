@@ -13,7 +13,7 @@ module ApplicationHelper
   def show_badges
     response = request_webservius('/API/show_badges', {:user_id => session[:fellownation_user_id] }).body
     link = ActiveSupport::JSON.decode(response)["results"]["link"]
-    image_tag link, :alt=>"avatar", :class=>"badge"
+    image_tag link || '', :alt=>"avatar", :class=>"badge"
   end
 
   def timeago(time, options = {})
