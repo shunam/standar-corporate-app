@@ -8,6 +8,11 @@ class JobsController < ApplicationController
       job = Job.new(params[:job])
       if job.save
         page.insert_html :top, 'job_list', :partial => "job_list.html", :locals => { :job => job }
+        page << "
+          jQuery('#job_date').val('');jQuery('#job_job_title').val('');jQuery('#job_location').val('');jQuery('#job_body').val('');
+        "
+      else
+        page.alert(job.errors.full_messages.to_sentence)
       end
     end
   end
