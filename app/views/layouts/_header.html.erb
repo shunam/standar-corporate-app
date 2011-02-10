@@ -4,7 +4,7 @@
       <li <%= 'class="selected"' if params[:controller] == "walls" && params[:action] == "index" %> ><%= link_to "Wall", walls_path %></li>
       <li <%= 'class="selected"' if params[:controller] == "home" && params[:action] == "info" %> ><%= link_to "Info", info_path %></li>
       <li <%= 'class="selected"' if params[:controller] == "jobs" && params[:action] == "index" %> ><%= link_to "Jobs", jobs_path %></li>
-      <% if session["token_#{session[:fellownation_user_id]}"] == FKEY %>
+      <% if session[:is_admin] %>
         <li <%= 'class="selected"' if params[:controller] == "home" && params[:action] == "admin" %> ><%= link_to "Admin", admin_path %></li>
       <% end %>
     </ul>
