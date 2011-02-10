@@ -25,7 +25,7 @@
   <div>
     <div class="main_avatar_container float_left">
       <img src="<%= get_image('candidate_profile_id' => message['candidate_profile_id']) %>" alt="avatar" class="avatar_container_comment"/>
-      <%= show_badges %>
+      <%= show_badges(message["user_id"]) %>
     </div>
     <div class="float_left message_container comment_container">
       <div class="float_right">
