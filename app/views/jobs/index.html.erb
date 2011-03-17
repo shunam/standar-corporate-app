@@ -23,9 +23,15 @@
         <% @jobs.each do |job| %>
           <tr>
             <td class="separator_bottom"><%= job.date %></td>
-            <td class="separator_bottom"><%= job.job_title %></td>
+            <td class="separator_bottom"><%= truncate(job.job_title,100) %></td>
             <td class="separator_bottom"><%= job.location %></td>
             <td class="separator_bottom"><%= button_to_remote "Apply", :url => apply_job_path(job) %></td>
+          </tr>
+          <tr>
+            <td class="separator_bottom">&nbsp;</td>
+            <td class="separator_bottom"><%= truncate(job.body,100) %></td>
+            <td class="separator_bottom">&nbsp;</td>
+            <td class="separator_bottom">&nbsp;</td>
           </tr>
         </tbody>
       <% end %>
