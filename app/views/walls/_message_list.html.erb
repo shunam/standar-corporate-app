@@ -83,7 +83,7 @@
 		      <% form_remote_tag :url => comment_message_path(message["id"]), :method => :post,
 		        :loading => "$('spinner_share_#{message["id"]}').show(); $('button_share_#{message["id"]}').hide()",
 		        :complete => "$('spinner_share_#{message["id"]}').hide(); $('button_share_#{message["id"]}').show()" do %>
-		        <%= text_area_tag "comment", nil,  :class => "comment_on_comment", :id => "text_field_comment_#{message['id']}" %>
+		        <%= text_area_tag "comment", nil,  :class => "comment_on_comment font-wall", :id => "text_field_comment_#{message['id']}" %>
 		        <br/>
 		        <%= submit_tag "POST", :id => "button_share_#{message["id"]}", :class => "float_right submitBtn2" %>
 		        <%= image_tag 'spinner.gif', :style => "display: none", :id => 'spinner_share_'+message["id"].to_s, :class => "float_right" %>
