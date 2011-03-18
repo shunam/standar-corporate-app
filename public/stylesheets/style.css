@@ -1,7 +1,3 @@
-html{
-   font-family:  "Lucida Grande", "Lucida Sans", "Neutraface 2 Bold Italic", "Neutraface 2 Bold",  "Nimbus Sans L";
-    font-size: 12px !important;
-}
 .a_href{
     color: #288AB3;
     font-size: 10px;
@@ -112,7 +108,7 @@ th{
     background-color: white;
 }
 .col1{
-    width: 0px;
+    width: 140px;
 }
 .col2{
     width: 503px;
@@ -300,8 +296,4 @@ h1{
 
 td.text-left{
   text-align:left;
-}
-
-.win.ie .col-date{
-	width: 140px;
 }

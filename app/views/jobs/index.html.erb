@@ -13,7 +13,7 @@
         <col class="col1"/>
         <thead>
           <tr class="head_bg">
-            <th class="col-date">Date</th>
+            <th class="col1">Date</th>
             <th>Job Title</th>
             <th>Location</th>
             <th>&nbsp;</th>
@@ -22,7 +22,7 @@
         <tbody>
         <% @jobs.each do |job| %>
           <tr>
-            <td class="separator_bottom col-date"><%= job.date %></td>
+            <td class="separator_bottom col1"><%= job.date %></td>
             <td class="separator_bottom text-left"><%= truncate(job.job_title,100) %></td>
             <td class="separator_bottom text-left"><%= job.location %></td>
             <td class="separator_bottom"><%= button_to_remote "Apply", {:url => apply_job_path(job), :loading => "$('spinner_job_#{job.id}').show();;$('apply_job_#{job.id}').hide();", :success => "$('spinner_job_#{job.id}').hide();$('apply_job_#{job.id}').show()"}, {:id => "apply_job_#{job.id}"} %>
