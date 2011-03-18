@@ -25,7 +25,8 @@
             <td class="separator_bottom"><%= job.date %></td>
             <td class="separator_bottom"><%= truncate(job.job_title,100) %></td>
             <td class="separator_bottom"><%= job.location %></td>
-            <td class="separator_bottom"><%= button_to_remote "Apply", :url => apply_job_path(job) %></td>
+            <td class="separator_bottom"><%= button_to_remote "Apply", {:url => apply_job_path(job), :loading => "$('spinner_job_#{job.id}').show();;$('apply_job_#{job.id}').hide();", :success => "$('spinner_job_#{job.id}').hide();$('apply_job_#{job.id}').show()"}, {:id => "apply_job_#{job.id}"} %>
+                                         <%= image_tag "spinner.gif", {:id => "spinner_job_#{job.id}", :style => "display:none;"} %></td>
           </tr>
           <tr>
             <td class="separator_bottom">&nbsp;</td>
