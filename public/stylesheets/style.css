@@ -294,6 +294,14 @@ h1{
 }
 
 .font-wall{
-  font-family:lucida Grande;
+  font-family:  "Lucida Grande", "Lucida Sans", "Neutraface 2 Bold Italic", "Neutraface 2 Bold",  "Nimbus Sans L";
   font-size: 12px;
+}
+
+td.text-left{
+  text-align:left;
+}
+
+.win.ie .col1{
+	width: 140px;
 }
