@@ -23,9 +23,13 @@
         <%  end
            end%>
       </div>
-      <div id ="show_more" class="more_app">
-        <%= render :partial => "show_more", :locals => {:index => 2} %>
-      </div>
+      <% unless @wall_messages.blank? %>
+        <% if @wall_messages.size == 20 %>
+        <div id ="show_more" class="more_app">
+          <%= render :partial => "show_more", :locals => {:index => 2} %>
+        </div>
+        <% end  %>
+      <% end  %>
     </div>
     <div class="clear"></div>
   </div>
